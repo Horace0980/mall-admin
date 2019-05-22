@@ -1,5 +1,6 @@
 package com.cskaoyan.malladmin.service.ad;
 
+import com.cskaoyan.malladmin.bean.ad.Ad;
 import com.cskaoyan.malladmin.vo.QueryIn;
 import com.cskaoyan.malladmin.vo.QueryVo;
 
@@ -9,4 +10,10 @@ import com.cskaoyan.malladmin.vo.QueryVo;
  */
 public interface AdService {
     QueryVo queryConditions(QueryIn queryIn, String name, String content);
+
+    QueryVo addNew(Ad ad);
+
+    QueryVo updateById(Ad ad);
+
+    QueryVo deleteById(Ad ad);
 }

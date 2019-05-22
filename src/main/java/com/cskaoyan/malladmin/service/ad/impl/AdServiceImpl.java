@@ -10,6 +10,7 @@ import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -40,5 +41,37 @@ public class AdServiceImpl implements AdService {
         map.put("total",l);
         return new QueryVo(0,map,"成功");
 
+    }
+
+    @Override
+    public QueryVo addNew(Ad ad) {
+        Date date = new Date();
+        ad.setAddTime(date);
+        ad.setUpdateTime(date);
+        int i = adMapper.insertSelective(ad);
+        if (i!=1)
+            return new QueryVo(605,null,"插入失败！网络异常！");
+
+        return new QueryVo(0,ad,"成功");
+    }
+
+    @Override
+    public QueryVo updateById(Ad ad) {
+        Date date = new Date();
+        ad.setUpdateTime(date);
+        int update = adMapper.updateByPrimaryKeySelective(ad);
+        if (update!=1){
+            return new QueryVo(605,null,"更新失败！网络异常！");
+        }
+        return new QueryVo(0,ad,"成功");
+    }
+
+    @Override
+    public QueryVo deleteById(Ad ad) {
+        int i = adMapper.updateDeletedById(true,ad.getId());
+        if (i!=1){
+            return new QueryVo(605,null,"更新失败！网络异常！");
+        }
+        return new QueryVo(0,null,"成功");
     }
 }

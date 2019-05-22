@@ -28,4 +28,6 @@ public interface AdMapper {
     int updateByPrimaryKeySelective(Ad record);
 
     int updateByPrimaryKey(Ad record);
+
+    int updateDeletedById(@Param("deleted") boolean deleted,@Param("id") Integer id);
 }
