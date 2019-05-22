@@ -2,9 +2,9 @@ package com.cskaoyan.malladmin.service.impl;
 
 import com.cskaoyan.malladmin.bean.admin.Admin;
 import com.cskaoyan.malladmin.bean.admin.AdminInfo;
-import com.cskaoyan.malladmin.bean.admin.Role;
+import com.cskaoyan.malladmin.bean.role.Role;
 import com.cskaoyan.malladmin.mapper.admin.AdminMapper;
-import com.cskaoyan.malladmin.mapper.admin.RoleMapper;
+import com.cskaoyan.malladmin.mapper.Role.RoleMapper;
 import com.cskaoyan.malladmin.service.AdminService;
 import com.cskaoyan.malladmin.vo.QueryVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +17,6 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.UUID;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * @Author: yyc

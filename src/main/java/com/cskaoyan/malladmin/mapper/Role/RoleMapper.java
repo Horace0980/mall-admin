@@ -1,7 +1,7 @@
-package com.cskaoyan.malladmin.mapper.admin;
+package com.cskaoyan.malladmin.mapper.Role;
 
-import com.cskaoyan.malladmin.bean.admin.Role;
-import com.cskaoyan.malladmin.bean.admin.RoleExample;
+import com.cskaoyan.malladmin.bean.role.Role;
+import com.cskaoyan.malladmin.bean.role.RoleExample;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

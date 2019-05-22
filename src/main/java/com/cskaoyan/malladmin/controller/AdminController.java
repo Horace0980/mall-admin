@@ -39,7 +39,7 @@ public class AdminController {
 
         String token1 = (String) session.getAttribute("token");
 //        if (token1==null || !token1.equals(token)){
-//            return new QueryVo(0,null,"please log in");
+//            return new QueryVo(0,null,"please Log in");
 //        }
         Admin admin = (Admin) session.getAttribute("admin");
         return adminService.getInfo(admin);
