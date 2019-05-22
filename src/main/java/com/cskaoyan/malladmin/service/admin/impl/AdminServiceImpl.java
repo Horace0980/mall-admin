@@ -5,7 +5,7 @@ import com.cskaoyan.malladmin.bean.admin.AdminInfo;
 import com.cskaoyan.malladmin.bean.role.Role;
 import com.cskaoyan.malladmin.mapper.admin.AdminMapper;
 import com.cskaoyan.malladmin.mapper.Role.RoleMapper;
-import com.cskaoyan.malladmin.service.AdminService;
+import com.cskaoyan.malladmin.service.admin.AdminService;
 import com.cskaoyan.malladmin.vo.QueryVo;
 import org.springframework.beans.factory.annotation.Autowired;
 
