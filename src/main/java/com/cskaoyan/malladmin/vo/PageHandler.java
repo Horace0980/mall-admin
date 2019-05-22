@@ -1,4 +1,4 @@
-package com.cskaoyan.malladmin.bean.user;
+package com.cskaoyan.malladmin.vo;
 
 import org.springframework.stereotype.Component;
 
