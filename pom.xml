@@ -63,6 +63,11 @@
             <artifactId>spring-security-core</artifactId>
             <version>5.1.5.RELEASE</version>
         </dependency>
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper</artifactId>
+			<version>5.0.0</version>
+		</dependency>
         <!--spring-security-->
 		<!--<dependency>-->
 			<!--<groupId>org.springframework.boot</groupId>-->
