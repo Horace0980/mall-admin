@@ -8,7 +8,6 @@ import java.util.List;
  * @Author: xf
  * @Date: 2019/5/22 21:04
  */
-@Component
 public class PageHandler<T> {
     private int total;
     private int pages;

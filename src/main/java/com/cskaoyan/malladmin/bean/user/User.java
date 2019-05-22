@@ -9,13 +9,13 @@ import java.util.Date;
  * @Author: xf
  * @Date: 2019/5/22 20:35
  */
-@Component
 public class User {
     private int user_id;
     private String username ;
     private String password;
     private int gender;
-    private Date addTime;
+    private Timestamp addTime;
+    private Date birthday;
 
     private Timestamp lastLoginTime;
     private String  lastLoginIp;
@@ -30,11 +30,19 @@ public class User {
     private Timestamp updateTime;
     private boolean delete;
 
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
     public Date getAddTime() {
         return addTime;
     }
 
-    public void setAddTime(Date addTime) {
+    public void setAddTime(Timestamp addTime) {
         this.addTime = addTime;
     }
 
