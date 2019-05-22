@@ -1,21 +1,15 @@
 package com.cskaoyan.malladmin.controller;
 
 import com.cskaoyan.malladmin.bean.admin.Admin;
-import com.cskaoyan.malladmin.bean.admin.AdminInfo;
-import com.cskaoyan.malladmin.service.AdminService;
+import com.cskaoyan.malladmin.service.admin.AdminService;
 import com.cskaoyan.malladmin.vo.QueryVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.Map;
 
 /**
  * @Author: yyc

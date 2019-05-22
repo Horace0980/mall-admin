@@ -1,4 +1,4 @@
-package com.cskaoyan.malladmin.service;
+package com.cskaoyan.malladmin.service.admin;
 
 import com.cskaoyan.malladmin.bean.admin.Admin;
 import com.cskaoyan.malladmin.vo.QueryVo;
