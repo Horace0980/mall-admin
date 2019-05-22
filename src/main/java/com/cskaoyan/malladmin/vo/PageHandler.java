@@ -13,17 +13,17 @@ public class PageHandler<T> {
     private int total;
     private int pages;
     private int limit;
-    private int oage;
+    private int page;
     private List<T> list;
 
     public PageHandler() {
     }
 
-    public PageHandler(int total, int pages, int limit, int oage, List<T> list) {
+    public PageHandler(int total, int pages, int limit, int page, List<T> list) {
         this.total = total;
         this.pages = pages;
         this.limit = limit;
-        this.oage = oage;
+        this.page = page;
         this.list = list;
     }
 
@@ -33,7 +33,7 @@ public class PageHandler<T> {
                 "total=" + total +
                 ", pages=" + pages +
                 ", limit=" + limit +
-                ", oage=" + oage +
+                ", page=" + page +
                 ", list=" + list +
                 '}';
     }
@@ -62,12 +62,12 @@ public class PageHandler<T> {
         this.limit = limit;
     }
 
-    public int getOage() {
-        return oage;
+    public int getpage() {
+        return page;
     }
 
-    public void setOage(int oage) {
-        this.oage = oage;
+    public void setpage(int page) {
+        this.page = page;
     }
 
     public List<T> getList() {
