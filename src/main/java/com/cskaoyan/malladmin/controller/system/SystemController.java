@@ -73,21 +73,32 @@ public class SystemController {
     /*--------------------------------以下是修改功能--------------------------------*/
     @PostMapping("mall")
     public QueryVo updateMall(@RequestBody Map<String, String> systemMap){
-        List mallSystems = new ArrayList();
-        for (String keyName : systemMap.keySet()) {
-            Date date = new Date();
-            MallSystem mallSystem = new MallSystem(keyName, systemMap.get(keyName), null, date, 0);
-            mallSystems.add(mallSystem);
-        }
-        boolean b = systemService.updateMallSystemBykeyName(mallSystems);
+        return basicUpdate(systemMap);
+    }
+
+    @PostMapping("express")
+    public QueryVo updateExpress(@RequestBody Map<String, String> systemMap){
+        return basicUpdate(systemMap);
+    }
+
+    @PostMapping("order")
+    public QueryVo updateOrder(@RequestBody Map<String, String> systemMap){
+        return basicUpdate(systemMap);
+    }
+
+    @PostMapping("wx")
+    public QueryVo updateWx(@RequestBody Map<String, String> systemMap){
+        return basicUpdate(systemMap);
+    }
+
+    public QueryVo basicUpdate(Map<String, String> systemMap){
+        boolean b = systemService.updateMallSystemBykeyName(systemMap);
         QueryVo queryVo = new QueryVo();
         if (b){
-            queryVo.setData(systemMap);
             queryVo.setErrmsg("成功");
             queryVo.setErrno(0);
         }else {
-            queryVo.setData(null);
-            queryVo.setErrmsg("失败");
+            queryVo.setErrmsg("修改失败！");
             queryVo.setErrno(500);
         }
         return queryVo;

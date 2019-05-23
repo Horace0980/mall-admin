@@ -12,5 +12,5 @@ import java.util.List;
 public interface SystemMapper {
     List<MallSystem> selectMallSystemByMall(@Param("prefix") String prefix);
 
-    int updateMallSystemBykeyName(List mallSystems);
+    int updateMallSystemBykeyName(MallSystem mallSystem);
 }

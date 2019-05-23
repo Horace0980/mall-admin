@@ -26,12 +26,9 @@
     </select>
 
     <update id="updateMallSystemBykeyName">
-      <foreach collection="list" item="mallSystem">
-          update cskaoyan_mall_system
-          set key_value = #{mallSystem.keyValue}
-          set update_time = #{mallSystem.updateTime}
-          set deleted = #{mallSystem.deleted}
-          where key_name = #{mallSystem.keyName}
-      </foreach>
+      update cskaoyan_mall_system
+      set key_value = #{keyValue},
+      update_time = #{updateTime}
+      where key_name = #{keyName}
     </update>
 </mapper>

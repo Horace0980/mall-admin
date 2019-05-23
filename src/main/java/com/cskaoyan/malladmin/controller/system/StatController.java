@@ -21,7 +21,7 @@ public class StatController {
     @RequestMapping("user")
     public QueryVo user(){
         String[] columns = {"day", "users"};
-        UserCount[] userCounts = {new UserCount("2019-04-20", 1)};
+        UserCount[] userCounts = {new UserCount("2019-04-19", 22)};
         return basicCountQueryVo(columns, userCounts);
     }
 
