@@ -19,4 +19,10 @@ public interface RegionMapper {
     List<Region> queryCity(String code);
 
     List<Region> queryDistrict(String code);
+
+    String queryCityById(int id);
+
+    String queryProvinceById(int id);
+
+    String queryAreaById(int id);
 }

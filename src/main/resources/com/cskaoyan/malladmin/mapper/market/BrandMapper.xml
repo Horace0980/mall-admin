@@ -23,4 +23,12 @@
     <update id="deleteBrand" parameterType="com.cskaoyan.malladmin.bean.market.Brand">
         update cskaoyan_mall_brand set deleted = true , update_time = #{updateTime} where id = #{id}
     </update>
+    <insert id="createBrand" parameterType="com.cskaoyan.malladmin.bean.market.Brand">
+        insert into cskaoyan_mall_brand(id,`name`,`desc`,pic_url,sort_order,floor_price,add_time,update_time,deleted)
+        values (#{id},#{name},#{desc},#{picUrl},#{sortOrder},#{floorPrice},#{addTime},#{updateTime},false)
+    </insert>
+    <update id="updateBrand" parameterType="com.cskaoyan.malladmin.bean.market.Brand">
+        update cskaoyan_mall_brand set `name` = #{name},`desc` = #{desc},update_time =#{updateTime},floor_price =#{floorPrice},pic_url=#{picUrl}
+        where id=#{id}
+    </update>
 </mapper>

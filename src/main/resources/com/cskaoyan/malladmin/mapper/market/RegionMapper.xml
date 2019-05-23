@@ -13,4 +13,15 @@
     <select id="queryDistrict" resultType="com.cskaoyan.malladmin.bean.market.Region">
         select id,`name`,`type`,code from cskaoyan_mall_region where `type` = 3  and  cast(code as char) like #{code}
     </select>
+
+    <select id="queryCityById" resultType="String">
+        select `name` from cskaoyan_mall_region where `type` = 2 and code = #{id}
+    </select>
+
+    <select id="queryProvinceById" resultType="String">
+        select `name` from cskaoyan_mall_region where `type` = 1 and code = #{id}
+    </select>
+    <select id="queryAreaById" resultType="String">
+        select `name` from cskaoyan_mall_region where `type` = 3 and code = #{id}
+    </select>
 </mapper>

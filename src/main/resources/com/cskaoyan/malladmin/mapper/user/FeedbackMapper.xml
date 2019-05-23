@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cskaoyan.malladmin.mapper.user.FeedbackMapper">
+    <resultMap id="BaseResultMap" type="com.cskaoyan.malladmin.bean.user.Feedback">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="user_id" jdbcType="INTEGER" property="userId" />
+        <result column="status" jdbcType="INTEGER" property="status"/>
+
+        <result column="has_picture" jdbcType="TINYINT" property="hasPicture"/>
+        <result column="deleted" jdbcType="TINYINT" property="deleted" />
+
+        <result column="username" jdbcType="VARCHAR" property="username" />
+        <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+        <result column="feed_type" jdbcType="VARCHAR" property="feedType" />
+        <result column="content" jdbcType="VARCHAR" property="content" />
+        <result column="pic_urls" jdbcType="VARCHAR" property="picUrls" />
+
+        <result column="add_time" jdbcType="TIMESTAMP" javaType="java.util.Date" property="addTime" />
+        <result column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" property="updateTime" />
+
+    </resultMap>
+    <sql id="base_sql">
+        id,user_id,pic_urls,content,feed_type,mobile,status,has_picture,username,deleted,add_time,update_time
+    </sql>
+    <sql id="where_sql">
+        where 1=1
+        <if test="id!=null and id!= 0 ">
+            and id = #{id}
+        </if>
+        <if test="username!=null and username!= ''">
+            and username like #{username}
+        </if>
+    </sql>
+
+    <select id="selectAllFeedback" resultMap="BaseResultMap">
+      select
+      <include refid="base_sql"/>
+      from cskaoyan_mall_feedback
+      <include refid="where_sql"/>
+      order by #{sort} #{order}
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="base_sql"/>
+        from cskaoyan_mall_feedback
+    </select>
+
+    <select id="queryFeedbackCount" resultType="int">
+        select count(id) from  cskaoyan_mall_feedback
+        <include refid="where_sql"/>
+    </select>
+
+
+</mapper>

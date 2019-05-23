@@ -1,35 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.cskaoyan.malladmin.mapper.user.CollectMapper">
-    <resultMap id="BaseResultMap" type="com.cskaoyan.malladmin.bean.user.Collect">
+<mapper namespace="com.cskaoyan.malladmin.mapper.user.HistoryMapper">
+    <resultMap id="BaseResultMap" type="com.cskaoyan.malladmin.bean.user.History">
         <id column="id" jdbcType="INTEGER" property="id" />
         <result column="user_id" jdbcType="INTEGER" property="userId" />
-        <result column="value_id" jdbcType="INTEGER" property="valueId" />
 
-        <result column="type" jdbcType="TINYINT" property="type" />
-        <result column="deleted" jdbcType="TINYINT" property="deleted" />
+        <result column="keyword" jdbcType="VARCHAR" property="keyword" />
+        <result column="from" jdbcType="VARCHAR" property="from" />
 
         <result column="add_time" jdbcType="TIMESTAMP" javaType="java.util.Date" property="addTime" />
         <result column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" property="updateTime" />
 
+        <result column="deleted" jdbcType="TINYINT" property="deleted" />
+
     </resultMap>
     <sql id="base_sql">
-        id,user_id,value_id,type,deleted,add_time,update_time
+        id,user_id,keyword,`from`,deleted,add_time,update_time
     </sql>
     <sql id="where_sql">
         where 1=1
-        <if test="valueid!=null and valueid!= 0 ">
-            and value_id = #{valueid}
-        </if>
         <if test="userid!=null and userid!= 0 ">
-            and user_id = #{userid}
+            and userid = #{userid}
+        </if>
+        <if test="keyword!=null and keyword!= ''">
+            and keyword like #{keyword}
         </if>
     </sql>
 
-    <select id="selectAllCollect" resultMap="BaseResultMap">
+    <select id="selectAllHistory" resultMap="BaseResultMap">
       select
       <include refid="base_sql"/>
-      from cskaoyan_mall_collect
+      from cskaoyan_mall_search_history
       <include refid="where_sql"/>
       order by #{sort} #{order}
     </select>
@@ -37,11 +38,11 @@
     <select id="selectAll" resultMap="BaseResultMap">
         select
         <include refid="base_sql"/>
-        from cskaoyan_mall_collect
+        from cskaoyan_mall_search_history
     </select>
 
-    <select id="queryCollectCount" resultType="int">
-        select count(id) from  cskaoyan_mall_collect
+    <select id="queryHistoryCount" resultType="int">
+        select count(id) from  cskaoyan_mall_search_history
         <include refid="where_sql"/>
     </select>
 

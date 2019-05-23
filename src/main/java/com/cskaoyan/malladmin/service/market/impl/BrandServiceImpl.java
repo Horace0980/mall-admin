@@ -81,4 +81,45 @@ public class BrandServiceImpl implements BrandService {
 
         return queryVo;
     }
+
+    @Override
+    public QueryVo createBrand(Brand brand) {
+        QueryVo queryVo = new QueryVo();
+
+        Date date = new Date();
+
+        brand.setUpdateTime(date);
+        brand.setAddTime(date);
+
+        int isCreate = brandMapper.createBrand(brand);
+
+        if (isCreate ==1){
+            queryVo.setErrmsg("success");
+            queryVo.setErrno(0);
+        }else {
+            queryVo.setErrno(605);
+            queryVo.setErrmsg("failed");
+        }
+
+        return queryVo;
+    }
+
+    @Override
+    public QueryVo updateBrand(Brand brand) {
+        QueryVo queryVo = new QueryVo();
+        Date date = new Date();
+        brand.setUpdateTime(date);
+        int isUpdate = brandMapper.updateBrand(brand);
+
+        if (isUpdate==1){
+            queryVo.setErrmsg("success");
+            queryVo.setErrno(0);
+        }else {
+            queryVo.setErrno(605);
+            queryVo.setErrmsg("failed");
+        }
+
+        return queryVo;
+
+    }
 }

@@ -1,6 +1,6 @@
 package com.cskaoyan.malladmin.controller.user;
 
-import com.cskaoyan.malladmin.service.user.AddressService;
+import com.cskaoyan.malladmin.service.user.FeedbackService;
 import com.cskaoyan.malladmin.vo.PageHandler;
 import com.cskaoyan.malladmin.vo.QueryIn;
 import com.cskaoyan.malladmin.vo.QueryVo;
@@ -13,15 +13,15 @@ import org.springframework.web.bind.annotation.RestController;
  * @Date: 2019/5/22 21:12
  */
 @RestController
-@RequestMapping("/address")
-public class AddressController {
+@RequestMapping("/feedback")
+public class FeedbackController {
     @Autowired
-    AddressService addressService;
+    FeedbackService feedbackService;
 
     @RequestMapping("/list")
-    public QueryVo selectAllAddress(QueryIn queryIn,String name,String userId){
+    public QueryVo selectAllFeedback(QueryIn queryIn,String username,String id){
         PageHandler pageHandler=null;
-        pageHandler= addressService.selectAllAddress(queryIn,name,userId);
+        pageHandler= feedbackService.selectAllFeedback(queryIn,username,id);
 
         return new QueryVo(0,pageHandler,"成功");
     }

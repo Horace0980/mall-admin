@@ -19,14 +19,33 @@ public class Address {
     private Date addTime;
     private Date updateTime;
     private boolean deleted;
-    private User user;
+    private String area;
+    private String city;
+    private String province;
 
-    public User getUser() {
-        return user;
+
+    public String getArea() {
+        return area;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
     }
 
     public int getId() {

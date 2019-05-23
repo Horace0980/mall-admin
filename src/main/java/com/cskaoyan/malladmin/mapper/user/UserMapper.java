@@ -11,9 +11,10 @@ import java.util.List;
  */
 public interface UserMapper {
 
-    int queryUserCount();
+    int queryUserCount(@Param("username")String name,@Param("mobile")String m);
 
-    List<User> selectAllUser(@Param("sort") String sort,@Param("order") String o,@Param("start")int s,@Param("rows")int l,@Param("username")String name,@Param("mobile")String m);
+    //List<User> selectAllUser(@Param("sort") String sort,@Param("order") String o,@Param("start")int s,@Param("rows")int l,@Param("username")String name,@Param("mobile")String m);
+    List<User> selectAllUser(@Param("sort") String sort,@Param("order") String o,@Param("username")String name,@Param("mobile")String m);
 
     //查询所有的user
     List<User> selectAll();

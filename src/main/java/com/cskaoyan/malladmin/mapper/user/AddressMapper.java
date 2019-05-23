@@ -12,9 +12,9 @@ import java.util.List;
  */
 public interface AddressMapper {
 
-    int queryAddressCount();
+    int queryAddressCount(@Param("name") String name, @Param("userid")int m);
 
-    List<Address> selectAllAddress(@Param("sort") String sort, @Param("order") String o, @Param("start") int s, @Param("rows") int l, @Param("name") String name, @Param("userid")int m);
+    List<Address> selectAllAddress(@Param("sort") String sort, @Param("order") String o, @Param("name") String name, @Param("userid")int m);
 
     //查询所有的user
     List<Address> selectAll();
