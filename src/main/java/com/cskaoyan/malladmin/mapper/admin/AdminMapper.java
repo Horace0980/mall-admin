@@ -2,10 +2,13 @@ package com.cskaoyan.malladmin.mapper.admin;
 
 import com.cskaoyan.malladmin.bean.admin.Admin;
 import com.cskaoyan.malladmin.bean.admin.AdminExample;
+import com.cskaoyan.malladmin.bean.admin.AdminItem;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
+@Mapper
 public interface AdminMapper {
     long countByExample(AdminExample example);
 
@@ -29,6 +32,9 @@ public interface AdminMapper {
 
     int updateByPrimaryKey(Admin record);
 
+    List<AdminItem> queryList();
+
     Admin selectByUsername(String username);
+
     Admin selectByUsernameAndPassword(@Param("username") String username,@Param("password") String password);
 }

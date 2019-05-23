@@ -1,12 +1,15 @@
 package com.cskaoyan.malladmin.service.admin.impl;
 
 import com.cskaoyan.malladmin.bean.admin.Admin;
+import com.cskaoyan.malladmin.bean.admin.AdminData;
 import com.cskaoyan.malladmin.bean.admin.AdminInfo;
-import com.cskaoyan.malladmin.bean.admin.Role;
+import com.cskaoyan.malladmin.bean.admin.AdminItem;
+import com.cskaoyan.malladmin.bean.role.Role;
 import com.cskaoyan.malladmin.mapper.admin.AdminMapper;
-import com.cskaoyan.malladmin.mapper.admin.RoleMapper;
+import com.cskaoyan.malladmin.mapper.role.RoleMapper;
 import com.cskaoyan.malladmin.service.admin.AdminService;
 import com.cskaoyan.malladmin.vo.QueryVo;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -16,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -24,13 +28,49 @@ import java.util.UUID;
  */
 @Service
 public class AdminServiceImpl implements AdminService {
-    @Autowired
+
+
+
+  @Autowired
     private AdminMapper adminMapper;
     @Autowired
     private RoleMapper roleMapper;
 
+  @Override
+  public boolean addAdmin(Admin admin) {
+    int insert = adminMapper.insert(admin);
+    return insert!=0;
+  }
 
-    private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+  @Override
+  public boolean QueryAdminName(String name) {
+    Admin admin = adminMapper.selectByUsername(name);
+    return admin!=null;
+  }
+
+  @Override
+  public QueryVo queryAdminPage(int page, int limit) {
+    //分页
+    PageHelper.startPage(page,limit);
+
+    //获取链表
+    List<AdminItem> admins = adminMapper.queryList();
+
+    //封装data对象
+    AdminData adminData = new AdminData();
+    adminData.setItems(admins);
+    adminData.setTotal(admins.size());
+
+    //封装QueryVo对象
+    QueryVo queryVo = new QueryVo();
+    queryVo.setErrmsg("成功");
+    queryVo.setErrno(0);
+    queryVo.setData(adminData);
+
+    return queryVo;
+  }
+
+  private BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
     @Override
     public QueryVo login(Admin admin, HttpServletRequest request) {
         Admin adminByUsername = adminMapper.selectByUsername(admin.getUsername());

@@ -1,15 +1,19 @@
-package com.cskaoyan.malladmin.bean.admin;
+package com.cskaoyan.malladmin.bean.storage;
 
 import java.util.Date;
 
-public class Role {
+public class Storage {
     private Integer id;
+
+    private String key;
 
     private String name;
 
-    private String desc;
+    private String type;
 
-    private Boolean enabled;
+    private Integer size;
+
+    private String url;
 
     private Date addTime;
 
@@ -25,6 +29,14 @@ public class Role {
         this.id = id;
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key == null ? null : key.trim();
+    }
+
     public String getName() {
         return name;
     }
@@ -33,20 +45,28 @@ public class Role {
         this.name = name == null ? null : name.trim();
     }
 
-    public String getDesc() {
-        return desc;
+    public String getType() {
+        return type;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc == null ? null : desc.trim();
+    public void setType(String type) {
+        this.type = type == null ? null : type.trim();
     }
 
-    public Boolean getEnabled() {
-        return enabled;
+    public Integer getSize() {
+        return size;
     }
 
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
+    public void setSize(Integer size) {
+        this.size = size;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url == null ? null : url.trim();
     }
 
     public Date getAddTime() {
