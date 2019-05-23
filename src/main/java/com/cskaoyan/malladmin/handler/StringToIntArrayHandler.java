@@ -47,7 +47,8 @@ public class StringToIntArrayHandler extends BaseTypeHandler<int[]> {
   public int[] leisiwole(String string){
     String s = string.replace("[", "");
     String s1 = s.replace("]", "");
-    String[] split = s1.split("");
+    String replace = s1.replace(",", "");
+    String[] split = replace.split("");
     int length = split.length;
     int[] m = new int[length];
     for (int i = 0; i < length; i++) {
