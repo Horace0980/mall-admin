@@ -2,6 +2,7 @@ package com.cskaoyan.malladmin.controller;
 
 import com.cskaoyan.malladmin.bean.coupon.Coupon;
 import com.cskaoyan.malladmin.service.coupon.CouponService;
+import com.cskaoyan.malladmin.service.coupon.CouponUserService;
 import com.cskaoyan.malladmin.vo.QueryIn;
 import com.cskaoyan.malladmin.vo.QueryVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,8 @@ import java.util.Map;
 public class CouponController {
     @Autowired
     private CouponService couponService;
+    @Autowired
+    private CouponUserService couponUserService;
     @RequestMapping("list")
     public QueryVo list(QueryIn queryIn,String name,String type,String status){
         return couponService.queryConditions(queryIn,name,type,status);
@@ -32,6 +35,23 @@ public class CouponController {
 
         return couponService.addNew(coupon);
     }
+    @RequestMapping("read")
+    public QueryVo getCouponById(String id){
+        return couponService.getCouponById(id);
+    }
+    @RequestMapping("listuser")
+    public QueryVo getCouponUserByCouponId(QueryIn queryIn,int couponId,String userId,String status){
+        return couponUserService.listUserByCouponId(queryIn,couponId,userId,status);
+    }
+    @RequestMapping("update")
+    public QueryVo updateCoupon(@RequestBody Coupon coupon){
+        return couponService.updateCoupon(coupon);
+    }
+    @RequestMapping("delete")
+    public QueryVo deleteCoupon(@RequestBody Coupon coupon){
+        return couponService.deleteCoupon(coupon);
+    }
+
 
 
 
