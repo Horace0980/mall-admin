@@ -2,27 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cskaoyan.malladmin.mapper.user.UserMapper">
     <resultMap id="BaseResultMap" type="com.cskaoyan.malladmin.bean.user.User">
-        <id column="id" jdbcType="INTEGER" property="user_id" />
+        <id column="id" jdbcType="INTEGER" property="id" />
         <result column="username" jdbcType="VARCHAR" property="username" />
         <result column="password" jdbcType="VARCHAR" property="password" />
         <result column="gender" jdbcType="TINYINT" property="gender" />
-        <result column="birthday" jdbcType="DATE" property="birthday" />
-        <result column="last_login_time"  property="lastLoginTime" />
         <result column="last_login_ip" jdbcType="VARCHAR" property="lastLoginIp" />
         <result column="user_level" jdbcType="TINYINT" property="userLevel" />
-        <result column="nickname" jdbcType="INTEGER" property="nickName" />
+        <result column="nickname" jdbcType="INTEGER" property="nickname" />
         <result column="mobile" jdbcType="VARCHAR" property="mobile" />
         <result column="avatar" jdbcType="VARCHAR" property="avatar" />
-        <result column="weixin_openid" jdbcType="VARCHAR" property="weiXinOpenId" />
+        <result column="weixin_openid" jdbcType="VARCHAR" property="weixinOpenid" />
         <result column="status" jdbcType="TINYINT" property="status" />
-        <result column="add_time"  property="addTime" />
-        <result column="update_time"  property="updateTime" />
-        <result column="deleted" jdbcType="TINYINT" property="delete" />
+
+        <result column="last_login_time"  jdbcType="TIMESTAMP" javaType="java.util.Date" property="lastLoginTime" />
+        <result column="add_time" jdbcType="TIMESTAMP" javaType="java.util.Date" property="addTime" />
+        <result column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" property="updateTime" />
+
+        <result column="deleted" jdbcType="TINYINT" property="deleted" />
     </resultMap>
     <select id="selectAllUser" resultMap="BaseResultMap">
-      select * from cskaoyan_mall_user order by #{sort} #{order}
+      select id,status,add_time,update_time,deleted,username,password,gender,last_login_time,last_login_ip,user_level,nickname,mobile,avatar,weixin_openid from cskaoyan_mall_user order by #{sort} #{order}
     </select>
-    <select id="queryUserCount" >
+    <select id="queryUserCount" resultType="int">
         select count(id) from  cskaoyan_mall_user
     </select>
 </mapper>

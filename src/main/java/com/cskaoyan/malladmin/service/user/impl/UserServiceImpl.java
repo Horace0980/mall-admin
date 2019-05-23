@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
         int total=userMapper.queryUserCount();
         pageHandler.setTotal(total);
 
-        int pages=total%page==0? total/page:total/page+1;
+        int pages = total%limit==0? total/limit:total/limit +1;
         pageHandler.setPages(pages);
 
         PageHelper.startPage(page,limit);

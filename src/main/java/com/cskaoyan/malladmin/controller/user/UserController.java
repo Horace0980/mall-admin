@@ -10,20 +10,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.rmi.MarshalledObject;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @Author: xf
  * @Date: 2019/5/22 21:12
  */
-@RestController("/user")
+@RestController
+@RequestMapping("/user")
 public class UserController {
     @Autowired
     UserService userService;
 
     @RequestMapping("/list")
-    public QueryVo selectAllUser(int page,int limit,String order,String sort){
+    public Map<String ,Object> selectAllUser(QueryIn queryIn){
         PageHandler pageHandler=null;
-        //pageHandler= userService.selectAllUser(queryIn);
-
-        return new QueryVo(0,pageHandler,"成功");
+        pageHandler= userService.selectAllUser(queryIn);
+        Map<String ,Object> map=new HashMap<>();
+        map.put("errno",0);
+        map.put("errmsg","成功");
+        map.put("data",pageHandler);
+        return map;
     }
+
 }
