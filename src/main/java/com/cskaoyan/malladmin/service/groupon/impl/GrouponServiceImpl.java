@@ -101,12 +101,12 @@ public class GrouponServiceImpl implements GrouponService {
         grouponExample.setOrderByClause(queryIn.getSort()+" "+queryIn.getOrder());
         GrouponExample.Criteria or = grouponExample.or();
         if (goodsId!=null && goodsId.trim().length()>0){
-            try {
+//            try {
                 or.andGrouponIdEqualTo(Integer.parseInt(goodsId.trim()));
-            } catch (Exception e) {
-                e.printStackTrace();
-                return new QueryVo(402,null,"参数异常");
-            }
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//                return new QueryVo(402,null,"参数异常");
+//            }
         }
         long l = grouponMapper.countByExample(grouponExample);
         PageHelper.startPage(queryIn.getPage(),queryIn.getLimit());
