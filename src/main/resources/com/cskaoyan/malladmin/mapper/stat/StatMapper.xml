@@ -14,7 +14,7 @@
         count(id) as orders,
         count(user_id) as customers,
         sum(actual_price) as amount,
-        round(sum(actual_price)/count(user_id),2) as pcr
+        sum(actual_price)/count(user_id) as pcr
         from cskaoyan_mall_order GROUP BY SUBSTR(add_time,1,10)
     </select>
     
