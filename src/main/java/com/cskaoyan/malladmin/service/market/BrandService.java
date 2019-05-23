@@ -1,5 +1,6 @@
 package com.cskaoyan.malladmin.service.market;
 
+import com.cskaoyan.malladmin.bean.market.Brand;
 import com.cskaoyan.malladmin.vo.QueryIn;
 import com.cskaoyan.malladmin.vo.QueryVo;
 
@@ -9,4 +10,6 @@ import com.cskaoyan.malladmin.vo.QueryVo;
  */
 public interface BrandService {
     QueryVo queryBrandList(QueryIn queryIn, String id, String name);
+
+    QueryVo deleteBrand(Brand brand);
 }

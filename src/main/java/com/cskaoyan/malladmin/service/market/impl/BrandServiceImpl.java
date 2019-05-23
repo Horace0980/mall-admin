@@ -10,6 +10,7 @@ import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -58,5 +59,26 @@ public class BrandServiceImpl implements BrandService {
         return new QueryVo(0,map,"成功");
 
 
+    }
+
+    @Override
+    public QueryVo deleteBrand(Brand brand) {
+
+        QueryVo queryVo = new QueryVo();
+
+        Date date = new Date();
+        brand.setUpdateTime(date);
+
+        int isDelete = brandMapper.deleteBrand(brand);
+
+        if (isDelete == 1){
+            queryVo.setErrmsg("成功");
+            queryVo.setErrno(0);
+        }else {
+            queryVo.setErrmsg("失败");
+            queryVo.setErrno(605);
+        }
+
+        return queryVo;
     }
 }

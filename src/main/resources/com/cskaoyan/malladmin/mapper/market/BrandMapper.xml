@@ -20,4 +20,7 @@
             and `name` like #{name}
         </if>
     </select>
+    <update id="deleteBrand" parameterType="com.cskaoyan.malladmin.bean.market.Brand">
+        update cskaoyan_mall_brand set deleted = true , update_time = #{updateTime} where id = #{id}
+    </update>
 </mapper>

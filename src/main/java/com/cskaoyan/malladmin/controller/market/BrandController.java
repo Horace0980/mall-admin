@@ -1,12 +1,24 @@
 package com.cskaoyan.malladmin.controller.market;
 
+import com.cskaoyan.malladmin.bean.Image;
+import com.cskaoyan.malladmin.bean.market.Brand;
 import com.cskaoyan.malladmin.service.market.BrandService;
+import com.cskaoyan.malladmin.utils.UploadUtils;
 import com.cskaoyan.malladmin.vo.QueryIn;
 import com.cskaoyan.malladmin.vo.QueryVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.Date;
 
 /**
  * @Author: Qiu
@@ -27,6 +39,21 @@ public class BrandController {
 
         return queryBrandList;
 
+    }
+    @RequestMapping("delete")
+    public QueryVo deleteBrand(@RequestBody Brand brand){
+        QueryVo deleteBrand = brandService.deleteBrand(brand);
+        return deleteBrand;
+    }
+
+    @RequestMapping("create")
+    public QueryVo createBrand(@RequestBody Brand brand) throws UnknownHostException {
+        QueryVo queryVo = new QueryVo();
+
+
+
+
+        return queryVo;
     }
 
 }
