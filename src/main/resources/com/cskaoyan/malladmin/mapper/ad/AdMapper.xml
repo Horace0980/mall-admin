@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cskaoyan.malladmin.mapper.ad.AdMapper">
+  <update id="updateDeletedById" >
+    update cskaoyan_mall_ad set deleted = #{deleted} where id = #{id}
+  </update>
   <resultMap id="BaseResultMap" type="com.cskaoyan.malladmin.bean.ad.Ad">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
@@ -197,6 +200,9 @@
         #{deleted,jdbcType=BIT},
       </if>
     </trim>
+    <selectKey resultType="int" order="AFTER" keyColumn="id" keyProperty="id">
+      select last_insert_id()
+    </selectKey>
   </insert>
   <select id="countByExample" parameterType="com.cskaoyan.malladmin.bean.ad.AdExample" resultType="java.lang.Long">
     select count(*) from cskaoyan_mall_ad
