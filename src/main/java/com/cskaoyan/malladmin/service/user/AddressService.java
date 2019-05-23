@@ -8,5 +8,5 @@ import com.cskaoyan.malladmin.vo.QueryIn;
  * @Date: 2019/5/22 21:14
  */
 public interface AddressService {
-    PageHandler selectAllAddress(QueryIn queryIn, String name, int userId);
+    PageHandler selectAllAddress(QueryIn queryIn, String name, String userId);
 }

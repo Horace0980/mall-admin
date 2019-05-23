@@ -22,18 +22,22 @@
     <sql id="base_sql">
         id,name,user_id,province_id,city_id,area_id,address,mobile,is_default,deleted,add_time,update_time
     </sql>
+    <sql id="where_sql">
+        where 1=1
+        <if test="name!=null and name !=''">
+            and name like #{name}
+        </if>
+        <if test="userid!=null and userid!=''">
+            and user_id = #{userid}
+        </if>
+    </sql>
 
     <select id="selectAllAddress" resultMap="BaseResultMap">
       select
       <include refid="base_sql"/>
-      from cskaoyan_mall_address where 1=1
-      <if test="name!=null and name !=''">
-          and name like #{name}
-      </if>
-        <if test="userid!=null and userid!=''">
-            and user_id = #{userid}
-        </if>
-      order by #{sort} #{order} limit #{start},#{rows}
+      from cskaoyan_mall_address
+      <include refid="where_sql"/>
+      order by #{sort} #{order}
     </select>
 
     <select id="selectAll" resultMap="BaseResultMap">
@@ -44,6 +48,7 @@
 
     <select id="queryAddressCount" resultType="int">
         select count(id) from  cskaoyan_mall_address
+        <include refid="where_sql"/>
     </select>
 
 

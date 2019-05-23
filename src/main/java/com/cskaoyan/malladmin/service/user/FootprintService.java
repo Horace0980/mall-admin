@@ -7,6 +7,6 @@ import com.cskaoyan.malladmin.vo.QueryIn;
  * @Author: xf
  * @Date: 2019/5/22 21:14
  */
-public interface CollectService {
-    PageHandler selectAllCollect(QueryIn queryIn,String valueId, String userId);
+public interface FootprintService {
+    PageHandler selectAllFootprint(QueryIn queryIn, String goodsId, String userId);
 }

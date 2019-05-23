@@ -1,6 +1,6 @@
 package com.cskaoyan.malladmin.controller.user;
 
-import com.cskaoyan.malladmin.service.user.AddressService;
+import com.cskaoyan.malladmin.service.user.HistoryService;
 import com.cskaoyan.malladmin.vo.PageHandler;
 import com.cskaoyan.malladmin.vo.QueryIn;
 import com.cskaoyan.malladmin.vo.QueryVo;
@@ -13,15 +13,15 @@ import org.springframework.web.bind.annotation.RestController;
  * @Date: 2019/5/22 21:12
  */
 @RestController
-@RequestMapping("/address")
-public class AddressController {
+@RequestMapping("/history")
+public class HistoryController {
     @Autowired
-    AddressService addressService;
+    HistoryService historyService;
 
     @RequestMapping("/list")
-    public QueryVo selectAllAddress(QueryIn queryIn,String name,String userId){
+    public QueryVo selectAllHistory(QueryIn queryIn,String keyword,String userId){
         PageHandler pageHandler=null;
-        pageHandler= addressService.selectAllAddress(queryIn,name,userId);
+        pageHandler= historyService.selectAllHistory(queryIn,keyword,userId);
 
         return new QueryVo(0,pageHandler,"成功");
     }

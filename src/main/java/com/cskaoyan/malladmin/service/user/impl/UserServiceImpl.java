@@ -23,13 +23,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public PageHandler selectAllUser(QueryIn queryIn ,String username,String mobile){
-        int total=userMapper.queryUserCount();
+        int total=userMapper.queryUserCount(username,mobile);
         PageHandler pageHandler=new PageHandler();
         if(username!=null && !"".equals(username)){
             username="%"+username+"%";
         }
-        int start=UserPage.getStart(queryIn.getPage(),queryIn.getLimit(),total);
-        List<User> list=userMapper.selectAllUser(queryIn.getSort(),queryIn.getOrder(),start,queryIn.getLimit(),username,mobile);
+
+        PageHelper.startPage(queryIn.getPage(),queryIn.getLimit());
+        List<User> list=userMapper.selectAllUser(queryIn.getSort(),queryIn.getOrder(),username,mobile);
 
         pageHandler.setTotal(total);
         pageHandler.setItems(list);

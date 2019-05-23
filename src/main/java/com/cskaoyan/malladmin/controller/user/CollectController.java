@@ -21,7 +21,7 @@ public class CollectController {
     @RequestMapping("/list")
     public QueryVo selectAllCollect(QueryIn queryIn,String valueId,String userId){
         PageHandler pageHandler=null;
-        pageHandler= collectService.selectAllCollect(queryIn,Integer.parseInt(valueId),Integer.parseInt(userId));
+        pageHandler= collectService.selectAllCollect(queryIn,valueId,userId);
 
         return new QueryVo(0,pageHandler,"成功");
     }

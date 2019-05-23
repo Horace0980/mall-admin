@@ -24,18 +24,22 @@
     <sql id="base_sql">
         id,status,add_time,birthday,update_time,deleted,username,password,gender,last_login_time,last_login_ip,user_level,nickname,mobile,avatar,weixin_openid
     </sql>
+    <sql id="where_sql">
+        where 1=1
+        <if test="username!=null and username !=''">
+            and username like #{username}
+        </if>
+        <if test="mobile!=null and mobile !=''">
+            and mobile = #{mobile}
+        </if>
+    </sql>
 
     <select id="selectAllUser" resultMap="BaseResultMap">
       select
       <include refid="base_sql"/>
-      from cskaoyan_mall_user where 1=1
-      <if test="username!=null and username !=''">
-          and username like #{username}
-      </if>
-        <if test="mobile!=null and mobile !=''">
-            and mobile = #{mobile}
-        </if>
-      order by #{sort} #{order} limit #{start},#{rows}
+      from cskaoyan_mall_user
+      <include refid="where_sql"/>
+      order by #{sort} #{order}
     </select>
 
     <select id="selectAll" resultMap="BaseResultMap">
@@ -46,6 +50,7 @@
 
     <select id="queryUserCount" resultType="int">
         select count(id) from  cskaoyan_mall_user
+        <include refid="where_sql"/>
     </select>
 
     <select id="queryUserById" resultMap="BaseResultMap">
