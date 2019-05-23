@@ -7,7 +7,6 @@ import java.util.Date;
  * @Date:2019/5/22 20:21
  */
 public class MallSystem {
-    private int id;
     private String keyName;
     private String keyValue;
     private Date addTime;
@@ -17,21 +16,12 @@ public class MallSystem {
     public MallSystem() {
     }
 
-    public MallSystem(int id, String keyName, String keyValue, Date addTime, Date updateTime, int deleted) {
-        this.id = id;
+    public MallSystem(String keyName, String keyValue, Date addTime, Date updateTime, int deleted) {
         this.keyName = keyName;
         this.keyValue = keyValue;
         this.addTime = addTime;
         this.updateTime = updateTime;
         this.deleted = deleted;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getKeyName() {
@@ -77,8 +67,7 @@ public class MallSystem {
     @Override
     public String toString() {
         return "MallSystem{" +
-                "id=" + id +
-                ", keyName='" + keyName + '\'' +
+                "keyName='" + keyName + '\'' +
                 ", keyValue='" + keyValue + '\'' +
                 ", addTime=" + addTime +
                 ", updateTime=" + updateTime +

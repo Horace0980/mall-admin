@@ -9,5 +9,6 @@ import java.util.List;
  */
 
 public interface SystemService {
-    List<MallSystem> selectMallConfigByPrefix(String prefix);
+    List<MallSystem> selectMallSystemByPrefix(String prefix);
+    boolean updateMallSystemBykeyName(List mallSystems);
 }

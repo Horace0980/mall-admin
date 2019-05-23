@@ -20,8 +20,14 @@ public class SystemServiceImpl implements SystemService {
     SystemMapper systemMapper;
 
     @Override
-    public List<MallSystem> selectMallConfigByPrefix(String prefix) {
+    public List<MallSystem> selectMallSystemByPrefix(String prefix) {
         String s = "%" + prefix + "%";
         return systemMapper.selectMallSystemByMall(s);
+    }
+
+    @Override
+    public boolean updateMallSystemBykeyName(List mallSystems){
+        int update = systemMapper.updateMallSystemBykeyName(mallSystems);
+        return update != 0;
     }
 }
