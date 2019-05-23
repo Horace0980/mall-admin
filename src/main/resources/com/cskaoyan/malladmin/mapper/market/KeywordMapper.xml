@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cskaoyan.malladmin.mapper.market.KeywordMapper">
     <select id="queryKeywordListCount" parameterType="com.cskaoyan.malladmin.bean.market.Keywords" resultType="Integer">
-        select count(*) from cskaoyan_mall_keyword where deleted = 0
+        select count(*) from cskaoyan_mall_keyword where deleted = false
         <if test="keyword != null">
             and keyword = #{keyword}
         </if>
@@ -12,7 +12,7 @@
     </select>
     <select id="queryKeywordList" parameterType="com.cskaoyan.malladmin.bean.market.Keywords" resultType="com.cskaoyan.malladmin.bean.market.Keywords">
         select id,keyword,url,is_hot as `isHot`,is_default as `isDefault`,sort_order as sortOrder,
-        add_time as addTime,update_time as updateTime,deleted from cskaoyan_mall_keyword where deleted = 0
+        add_time as addTime,update_time as updateTime,deleted from cskaoyan_mall_keyword where deleted = false
         <if test="keyword != null">
             and keyword like #{keyword}
         </if>

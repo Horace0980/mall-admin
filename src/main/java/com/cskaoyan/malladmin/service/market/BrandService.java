@@ -12,4 +12,8 @@ public interface BrandService {
     QueryVo queryBrandList(QueryIn queryIn, String id, String name);
 
     QueryVo deleteBrand(Brand brand);
+
+    QueryVo createBrand(Brand brand);
+
+    QueryVo updateBrand(Brand brand);
 }
