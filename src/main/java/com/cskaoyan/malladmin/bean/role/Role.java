@@ -13,7 +13,20 @@ public class Role {
 
     private Date addTime;
 
-    private Date updateTime;
+  @Override
+  public String toString() {
+    return "Role{" +
+      "id=" + id +
+      ", name='" + name + '\'' +
+      ", desc='" + desc + '\'' +
+      ", enabled=" + enabled +
+      ", addTime=" + addTime +
+      ", updateTime=" + updateTime +
+      ", deleted=" + deleted +
+      '}';
+  }
+
+  private Date updateTime;
 
     private Boolean deleted;
 

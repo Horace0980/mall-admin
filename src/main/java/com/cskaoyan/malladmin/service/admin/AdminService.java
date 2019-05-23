@@ -13,4 +13,12 @@ public interface AdminService {
     QueryVo login(Admin admin, HttpServletRequest request);
 
     QueryVo getInfo(Admin adminInfo);
+
+    QueryVo queryAdminPage(int page,int limit);
+
+    boolean addAdmin(Admin admin);
+
+    boolean QueryAdminName(String name);
+
+
 }

@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cskaoyan.malladmin.mapper.admin.AdminMapper">
+  <resultMap id="adminMap" type="com.cskaoyan.malladmin.bean.admin.AdminItem">
+    <result column="id" property="id"/>
+    <result column="username" property="username"/>
+    <result column="avatar" property="avatar"/>
+    <result column="role_ids" property="roleIds" typeHandler="com.cskaoyan.malladmin.handler.StringToIntArrayHandler"/>
+  </resultMap>
+  <select id="queryList" resultMap="adminMap">
+    select id,username,avatar,role_ids from cskaoyan_mall_admin;
+  </select>
   <select id="selectByUsername" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List"></include>
