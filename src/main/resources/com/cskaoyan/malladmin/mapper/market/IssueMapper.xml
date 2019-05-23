@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cskaoyan.malladmin.mapper.market.IssueMapper">
+    <select id="queryIssueListCount" parameterType="com.cskaoyan.malladmin.bean.market.Issue" resultType="Integer">
+        select count(*) from cskaoyan_mall_issue
+        <if test="question != null">
+            where question like #{question}
+        </if>
+    </select>
+    <select id="queryIssueList" parameterType="com.cskaoyan.malladmin.bean.market.Issue" resultType="com.cskaoyan.malladmin.bean.market.Issue">
+        select id,question,answer,deleted, add_time as addTime,update_time as updateTime from cskaoyan_mall_issue
+        <if test="question != null">
+            where question like #{question}
+        </if>
+    </select>
+    <update id="deleteIssue" parameterType="com.cskaoyan.malladmin.bean.market.Issue">
+         update cskaoyan_mall_issue SET deleted = true , update_time =#{updateTime} where  id = #{id}
+    </update>
+    <update id="updateIssue" parameterType="com.cskaoyan.malladmin.bean.market.Issue">
+         update cskaoyan_mall_issue SET question = #{question} , answer = #{answer} , update_time =#{updateTime} where  id = #{id}
+    </update>
+
+    <insert id="createIssue" parameterType="com.cskaoyan.malladmin.bean.market.Issue">
+        insert into cskaoyan_mall_issue (id,question,answer,add_time,update_time,deleted)
+        values (null ,#{question},#{answer},#{addTime},#{updateTime},false)
+    </insert>
+</mapper>
