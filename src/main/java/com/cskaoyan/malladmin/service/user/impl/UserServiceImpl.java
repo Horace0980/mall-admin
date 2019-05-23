@@ -1,6 +1,7 @@
 package com.cskaoyan.malladmin.service.user.impl;
 
 import com.cskaoyan.malladmin.bean.user.User;
+import com.cskaoyan.malladmin.bean.user.UserPage;
 import com.cskaoyan.malladmin.mapper.user.UserMapper;
 import com.cskaoyan.malladmin.service.user.UserService;
 import com.cskaoyan.malladmin.vo.PageHandler;
@@ -21,22 +22,19 @@ public class UserServiceImpl implements UserService {
     UserMapper userMapper;
 
     @Override
-    public PageHandler selectAllUser(QueryIn queryIn){
+    public PageHandler selectAllUser(QueryIn queryIn ,String username,String mobile){
         int total=userMapper.queryUserCount();
-        int page=queryIn.getPage();
-        int limit=queryIn.getLimit();
-        PageHelper.startPage(page,limit);
-        String sort=queryIn.getSort();
-        String order=queryIn.getOrder();
         PageHandler pageHandler=new PageHandler();
+        if(username!=null && !"".equals(username)){
+            username="%"+username+"%";
+        }
+        int start=UserPage.getStart(queryIn.getPage(),queryIn.getLimit(),total);
+        List<User> list=userMapper.selectAllUser(queryIn.getSort(),queryIn.getOrder(),start,queryIn.getLimit(),username,mobile);
+
         pageHandler.setTotal(total);
-
-
-        List<User> list=userMapper.selectAllUser(sort,order );
-
-
-
         pageHandler.setItems(list);
+
         return pageHandler;
     }
+
 }

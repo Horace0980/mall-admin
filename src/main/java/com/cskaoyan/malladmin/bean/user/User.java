@@ -19,6 +19,7 @@ public class User {
     private  int userLevel;
     private String nickname;
     private String mobile;
+    private Date birthday;
 
     private String avatar;
     private String weixinOpenid;
@@ -27,6 +28,14 @@ public class User {
     private Date addTime;
     private Date updateTime;
     private boolean deleted;
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
 
     public int getId() {
         return id;
