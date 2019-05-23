@@ -25,14 +25,11 @@ public class UserController {
     UserService userService;
 
     @RequestMapping("/list")
-    public Map<String ,Object> selectAllUser(QueryIn queryIn){
+    public QueryVo selectAllUser(QueryIn queryIn){
         PageHandler pageHandler=null;
         pageHandler= userService.selectAllUser(queryIn);
-        Map<String ,Object> map=new HashMap<>();
-        map.put("errno",0);
-        map.put("errmsg","成功");
-        map.put("data",pageHandler);
-        return map;
+
+        return new QueryVo(0,pageHandler,"成功");
     }
 
 }

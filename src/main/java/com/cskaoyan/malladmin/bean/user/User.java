@@ -11,19 +11,19 @@ public class User {
     private int id;
     private String username ;
     private String password;
-    private short gender;
+    private int gender;
 
 
     private Date lastLoginTime;
     private String  lastLoginIp;
-    private  short userLevel;
+    private  int userLevel;
     private String nickname;
     private String mobile;
 
     private String avatar;
     private String weixinOpenid;
     private String sessionKey="";
-    private short status;
+    private int status;
     private Date addTime;
     private Date updateTime;
     private boolean deleted;
@@ -135,27 +135,27 @@ public class User {
         this.deleted = deleted;
     }
 
-    public short getGender() {
+    public int getGender() {
         return gender;
     }
 
-    public void setGender(short gender) {
+    public void setGender(int gender) {
         this.gender = gender;
     }
 
-    public short getUserLevel() {
+    public int getUserLevel() {
         return userLevel;
     }
 
-    public void setUserLevel(short userLevel) {
+    public void setUserLevel(int userLevel) {
         this.userLevel = userLevel;
     }
 
-    public short getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(short status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 }

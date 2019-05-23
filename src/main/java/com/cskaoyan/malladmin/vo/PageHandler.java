@@ -10,31 +10,14 @@ import java.util.List;
  */
 public class PageHandler<T> {
     private int total;
-    private int pages;
-    private int limit;
-    private int page;
-    private List<T> list;
+    private List<T> items;
 
     public PageHandler() {
     }
 
-    public PageHandler(int total, int pages, int limit, int page, List<T> list) {
+    public PageHandler(int total, List<T> items) {
         this.total = total;
-        this.pages = pages;
-        this.limit = limit;
-        this.page = page;
-        this.list = list;
-    }
-
-    @Override
-    public String toString() {
-        return "PageHandler{" +
-                "total=" + total +
-                ", pages=" + pages +
-                ", limit=" + limit +
-                ", page=" + page +
-                ", list=" + list +
-                '}';
+        this.items = items;
     }
 
     public int getTotal() {
@@ -45,35 +28,19 @@ public class PageHandler<T> {
         this.total = total;
     }
 
-    public int getPages() {
-        return pages;
+    public List<T> getItems() {
+        return items;
     }
 
-    public void setPages(int pages) {
-        this.pages = pages;
+    public void setItems(List<T> items) {
+        this.items = items;
     }
 
-    public int getLimit() {
-        return limit;
-    }
-
-    public void setLimit(int limit) {
-        this.limit = limit;
-    }
-
-    public int getpage() {
-        return page;
-    }
-
-    public void setpage(int page) {
-        this.page = page;
-    }
-
-    public List<T> getList() {
-        return list;
-    }
-
-    public void setList(List<T> list) {
-        this.list = list;
+    @Override
+    public String toString() {
+        return "PageHandler{" +
+                "total=" + total +
+                ", items=" + items +
+                '}';
     }
 }

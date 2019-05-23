@@ -22,21 +22,21 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public PageHandler selectAllUser(QueryIn queryIn){
+        int total=userMapper.queryUserCount();
         int page=queryIn.getPage();
         int limit=queryIn.getLimit();
+        PageHelper.startPage(page,limit);
+        String sort=queryIn.getSort();
+        String order=queryIn.getOrder();
         PageHandler pageHandler=new PageHandler();
-        pageHandler.setpage(page);
-        pageHandler.setLimit(limit);
-
-        int total=userMapper.queryUserCount();
         pageHandler.setTotal(total);
 
-        int pages = total%limit==0? total/limit:total/limit +1;
-        pageHandler.setPages(pages);
 
-        PageHelper.startPage(page,limit);
-        List<User> list=userMapper.selectAllUser(queryIn.getSort(),queryIn.getOrder());
-        pageHandler.setList(list);
+        List<User> list=userMapper.selectAllUser(sort,order );
+
+
+
+        pageHandler.setItems(list);
         return pageHandler;
     }
 }
