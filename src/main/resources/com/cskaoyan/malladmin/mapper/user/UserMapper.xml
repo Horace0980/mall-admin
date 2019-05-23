@@ -13,6 +13,7 @@
         <result column="avatar" jdbcType="VARCHAR" property="avatar" />
         <result column="weixin_openid" jdbcType="VARCHAR" property="weixinOpenid" />
         <result column="status" jdbcType="TINYINT" property="status" />
+        <result column="birthday" jdbcType="TIMESTAMP" javaType="java.sql.Date" property="birthday" />
 
         <result column="last_login_time"  jdbcType="TIMESTAMP" javaType="java.util.Date" property="lastLoginTime" />
         <result column="add_time" jdbcType="TIMESTAMP" javaType="java.util.Date" property="addTime" />
@@ -20,10 +21,38 @@
 
         <result column="deleted" jdbcType="TINYINT" property="deleted" />
     </resultMap>
+    <sql id="base_sql">
+        id,status,add_time,birthday,update_time,deleted,username,password,gender,last_login_time,last_login_ip,user_level,nickname,mobile,avatar,weixin_openid
+    </sql>
+
     <select id="selectAllUser" resultMap="BaseResultMap">
-      select id,status,add_time,update_time,deleted,username,password,gender,last_login_time,last_login_ip,user_level,nickname,mobile,avatar,weixin_openid from cskaoyan_mall_user order by #{sort} #{order}
+      select
+      <include refid="base_sql"/>
+      from cskaoyan_mall_user where 1=1
+      <if test="username!=null and username !=''">
+          and username like #{username}
+      </if>
+        <if test="mobile!=null and mobile !=''">
+            and mobile = #{mobile}
+        </if>
+      order by #{sort} #{order} limit #{start},#{rows}
     </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="base_sql"/>
+        from cskaoyan_mall_user
+    </select>
+
     <select id="queryUserCount" resultType="int">
         select count(id) from  cskaoyan_mall_user
     </select>
+
+    <select id="queryUserById" resultMap="BaseResultMap">
+        select
+        <include refid="base_sql"/>
+        from  cskaoyan_mall_user where id=#{id}
+    </select>
+
+
 </mapper>
