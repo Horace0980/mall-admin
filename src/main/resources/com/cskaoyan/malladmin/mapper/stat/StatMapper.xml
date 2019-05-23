@@ -5,7 +5,8 @@
 <mapper namespace="com.cskaoyan.malladmin.mapper.stat.StatMapper">
 
     <select id="countUsers" resultType="map">
-        SELECT SUBSTR(add_time,1,10) as day,count(*) as users from cskaoyan_mall_user GROUP BY SUBSTR(add_time,1,10)
+        SELECT SUBSTR(add_time,1,10) as day,count(*) as users from cskaoyan_mall_user
+        GROUP BY SUBSTR(add_time,1,10)
     </select>
 
     <select id="countOrders" resultType="map">
