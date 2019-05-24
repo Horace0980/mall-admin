@@ -7,10 +7,7 @@ import com.cskaoyan.malladmin.vo.QueryVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @Author: Qiu
@@ -54,5 +51,59 @@ public class CategoryServiceImpl implements CategoryService {
 
         return new QueryVo(0,l1,"success");
 
+    }
+
+    @Override
+    public QueryVo deleteCategory(Category category) {
+        QueryVo queryVo = new QueryVo();
+        Date date = new Date();
+        category.setUpdateTime(date);
+        int isDelete = categoryMapper.deleteCategory(category);
+        if (isDelete == 1){
+            queryVo.setErrmsg("success");
+            queryVo.setErrno(0);
+        }else {
+            queryVo.setErrno(605);
+            queryVo.setErrmsg("failed");
+        }
+        return queryVo;
+    }
+
+    @Override
+    public QueryVo createCategory(Category category) {
+        QueryVo queryVo = new QueryVo();
+        Date date = new Date();
+        category.setUpdateTime(date);
+        category.setAddTime(date);
+        int isCreate = categoryMapper.createCategory(category);
+        if (isCreate ==1){
+            queryVo.setErrmsg("success");
+            queryVo.setErrno(0);
+        }else {
+            queryVo.setErrno(605);
+            queryVo.setErrmsg("failed");
+        }
+        return queryVo;
+    }
+
+    @Override
+    public QueryVo updateCategory(Category category) {
+        QueryVo queryVo = new QueryVo();
+        Date date = new Date();
+        String level = category.getLevel();
+        if (level.equals("L1")){
+            category.setPid(0);
+        }
+        category.setUpdateTime(date);
+        int isUpdate = categoryMapper.updateCategory(category);
+
+        if (isUpdate ==1){
+            queryVo.setErrmsg("success");
+            queryVo.setErrno(0);
+        }else {
+            queryVo.setErrno(605);
+            queryVo.setErrmsg("failed");
+        }
+        return queryVo;
     }
 }

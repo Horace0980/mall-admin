@@ -1,5 +1,6 @@
 package com.cskaoyan.malladmin.service.market;
 
+import com.cskaoyan.malladmin.bean.market.Category;
 import com.cskaoyan.malladmin.vo.QueryVo;
 
 /**
@@ -10,4 +11,10 @@ public interface CategoryService {
     QueryVo getLevelOne();
 
     QueryVo queryCategoryList();
+
+    QueryVo deleteCategory(Category category);
+
+    QueryVo createCategory(Category category);
+
+    QueryVo updateCategory(Category category);
 }

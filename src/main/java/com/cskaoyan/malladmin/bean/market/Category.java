@@ -1,5 +1,6 @@
 package com.cskaoyan.malladmin.bean.market;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -16,20 +17,14 @@ public class Category {
     String level;
     String name;
     String picUrl;
+
+    int pid;
+
+    Date addTime;
+    Date updateTime;
     List<Category> children;
 
     public Category() {
-    }
-
-    public Category(String desc, String iconUrl, int id, String keywords, String level, String name, String picUrl, List<Category> children) {
-        this.desc = desc;
-        this.iconUrl = iconUrl;
-        this.id = id;
-        this.keywords = keywords;
-        this.level = level;
-        this.name = name;
-        this.picUrl = picUrl;
-        this.children = children;
     }
 
     @Override
@@ -42,8 +37,49 @@ public class Category {
                 ", level='" + level + '\'' +
                 ", name='" + name + '\'' +
                 ", picUrl='" + picUrl + '\'' +
+                ", pid=" + pid +
+                ", addTime=" + addTime +
+                ", updateTime=" + updateTime +
                 ", children=" + children +
                 '}';
+    }
+
+    public int getPid() {
+        return pid;
+    }
+
+    public void setPid(int pid) {
+        this.pid = pid;
+    }
+
+    public Category(String desc, String iconUrl, int id, String keywords, String level, String name, String picUrl, int pid, Date addTime, Date updateTime, List<Category> children) {
+        this.desc = desc;
+        this.iconUrl = iconUrl;
+        this.id = id;
+        this.keywords = keywords;
+        this.level = level;
+        this.name = name;
+        this.picUrl = picUrl;
+        this.pid = pid;
+        this.addTime = addTime;
+        this.updateTime = updateTime;
+        this.children = children;
+    }
+
+    public Date getAddTime() {
+        return addTime;
+    }
+
+    public void setAddTime(Date addTime) {
+        this.addTime = addTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
     public String getDesc() {
