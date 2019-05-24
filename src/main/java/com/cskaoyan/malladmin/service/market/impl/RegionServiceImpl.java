@@ -47,7 +47,7 @@ public class RegionServiceImpl implements RegionService {
       String cCode = String.valueOf(father.getCode());
       for (Region district : childs) {
         String code = String.valueOf(district.getCode());
-        if (cCode.equals(code.substring(0, cCode.length() - 1))) {
+        if (cCode.equals(code.substring(0, cCode.length()))) {
           children.add(district);
         }
       }
