@@ -7,12 +7,13 @@ import java.util.Date;
  * @Author: Qiu
  * @Date: 2019/5/22 20:44
  */
+
 public class Brand {
     int id;
     String name;
     String desc;
     String picUrl;
-    boolean sortOrder;
+    int sortOrder;
     BigDecimal floorPrice;
     Date addTime;
     Date updateTime;
@@ -21,7 +22,7 @@ public class Brand {
     public Brand() {
     }
 
-    public Brand(int id, String name, String desc, String picUrl, boolean sortOrder, BigDecimal floorPrice, Date addTime, Date updateTime, boolean deleted) {
+    public Brand(int id, String name, String desc, String picUrl, int sortOrder, BigDecimal floorPrice, Date addTime, Date updateTime, boolean deleted) {
         this.id = id;
         this.name = name;
         this.desc = desc;
@@ -81,11 +82,11 @@ public class Brand {
         this.picUrl = picUrl;
     }
 
-    public boolean getSortOrder() {
+    public int getSortOrder() {
         return sortOrder;
     }
 
-    public void setSortOrder(boolean sortOrder) {
+    public void setSortOrder(int sortOrder) {
         this.sortOrder = sortOrder;
     }
 

@@ -13,7 +13,7 @@
     <result column="type" jdbcType="SMALLINT" property="type" />
     <result column="status" jdbcType="SMALLINT" property="status" />
     <result column="goods_type" jdbcType="SMALLINT" property="goodsType" />
-    <result column="goods_value" jdbcType="VARCHAR" property="goodsValue" />
+    <result column="goods_value" jdbcType="VARCHAR" property="goodsValue" typeHandler="com.cskaoyan.malladmin.handler.ArrayToStringHandler"/>
     <result column="code" jdbcType="VARCHAR" property="code" />
     <result column="time_type" jdbcType="SMALLINT" property="timeType" />
     <result column="days" jdbcType="SMALLINT" property="days" />

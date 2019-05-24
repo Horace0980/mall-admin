@@ -24,9 +24,9 @@ public class StorageControler {
   }
 
   //创建对象
-  @RequestMapping("storage/create")
-  public  QueryVo storageCreate(){
-
-    return null;
-  }
+//  @RequestMapping("storage/create")
+//  public  QueryVo storageCreate(){
+//
+//    return null;
+//  }
 }

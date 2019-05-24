@@ -6,6 +6,7 @@ import java.util.Date;
  * @Author: Qiu
  * @Date: 2019/5/22 20:39
  */
+
 public class Issue {
     int id;
     String question;

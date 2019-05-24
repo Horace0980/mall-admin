@@ -1,57 +1,48 @@
 package com.cskaoyan.malladmin.bean.user;
 
-import org.springframework.stereotype.Component;
-
-import java.sql.Timestamp;
 import java.util.Date;
+
 
 /**
  * @Author: xf
  * @Date: 2019/5/22 20:35
  */
-@Component
 public class User {
-    private int user_id;
+    private int id;
     private String username ;
     private String password;
     private int gender;
-    private Date addTime;
 
-    private Timestamp lastLoginTime;
+
+    private Date lastLoginTime;
     private String  lastLoginIp;
     private  int userLevel;
-    private String nickName;
+    private String nickname;
     private String mobile;
+    private Date birthday;
 
     private String avatar;
-    private String weiXinOpenId;
-    private String sessionKey;
+    private String weixinOpenid;
+    private String sessionKey="";
     private int status;
-    private Timestamp updateTime;
-    private boolean delete;
+    private Date addTime;
+    private Date updateTime;
+    private boolean deleted;
 
-    public Date getAddTime() {
-        return addTime;
+    public Date getBirthday() {
+        return birthday;
     }
 
-    public void setAddTime(Date addTime) {
-        this.addTime = addTime;
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 
-    public String getSessionKey() {
-        return sessionKey;
+    public int getId() {
+        return id;
     }
 
-    public void setSessionKey(String sessionKey) {
-        this.sessionKey = sessionKey;
-    }
-
-    public int getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -70,20 +61,12 @@ public class User {
         this.password = password;
     }
 
-    public int getGender() {
-        return gender;
-    }
 
-    public void setGender(int gender) {
-        this.gender = gender;
-    }
-
-
-    public Timestamp getLastLoginTime() {
+    public Date getLastLoginTime() {
         return lastLoginTime;
     }
 
-    public void setLastLoginTime(Timestamp lastLoginTime) {
+    public void setLastLoginTime(Date lastLoginTime) {
         this.lastLoginTime = lastLoginTime;
     }
 
@@ -95,20 +78,12 @@ public class User {
         this.lastLoginIp = lastLoginIp;
     }
 
-    public int getUserLevel() {
-        return userLevel;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setUserLevel(int userLevel) {
-        this.userLevel = userLevel;
-    }
-
-    public String getNickName() {
-        return nickName;
-    }
-
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
     public String getMobile() {
@@ -127,12 +102,62 @@ public class User {
         this.avatar = avatar;
     }
 
-    public String getWeiXinOpenId() {
-        return weiXinOpenId;
+    public String getWeixinOpenid() {
+        return weixinOpenid;
     }
 
-    public void setWeiXinOpenId(String weiXinOpenId) {
-        this.weiXinOpenId = weiXinOpenId;
+    public void setWeixinOpenid(String weixinOpenid) {
+        this.weixinOpenid = weixinOpenid;
+    }
+
+    public String getSessionKey() {
+        return sessionKey;
+    }
+
+    public void setSessionKey(String sessionKey) {
+        this.sessionKey = sessionKey;
+    }
+
+
+
+    public Date getAddTime() {
+        return addTime;
+    }
+
+    public void setAddTime(Date addTime) {
+        this.addTime = addTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
+    }
+
+    public int getGender() {
+        return gender;
+    }
+
+    public void setGender(int gender) {
+        this.gender = gender;
+    }
+
+    public int getUserLevel() {
+        return userLevel;
+    }
+
+    public void setUserLevel(int userLevel) {
+        this.userLevel = userLevel;
     }
 
     public int getStatus() {
@@ -141,43 +166,5 @@ public class User {
 
     public void setStatus(int status) {
         this.status = status;
-    }
-
-    public Timestamp getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Timestamp updateTime) {
-        this.updateTime = updateTime;
-    }
-
-    public boolean isDelete() {
-        return delete;
-    }
-
-    public void setDelete(boolean delete) {
-        this.delete = delete;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "user_id=" + user_id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", gender=" + gender +
-                ", addTime=" + addTime +
-                ", lastLoginTime=" + lastLoginTime +
-                ", lastLoginIp='" + lastLoginIp + '\'' +
-                ", userLevel=" + userLevel +
-                ", nickName='" + nickName + '\'' +
-                ", mobile='" + mobile + '\'' +
-                ", avatar='" + avatar + '\'' +
-                ", weiXinOpenId='" + weiXinOpenId + '\'' +
-                ", sessionKey='" + sessionKey + '\'' +
-                ", status=" + status +
-                ", updateTime=" + updateTime +
-                ", delete=" + delete +
-                '}';
     }
 }

@@ -6,7 +6,41 @@
     <result column="username" property="username"/>
     <result column="avatar" property="avatar"/>
     <result column="role_ids" property="roleIds" typeHandler="com.cskaoyan.malladmin.handler.StringToIntArrayHandler"/>
+    <result column="update_time" property="updateTime"/>
+    <result column="password" property="password"/>
   </resultMap>
+
+  <select id="queryByUsername" resultMap="adminMap">
+    select id,username,avatar,role_ids from cskaoyan_mall_admin where username like #{name}
+  </select>
+
+  <select id="queryById" resultMap="adminMap">
+    select id,username,password,avatar,role_ids,update_time from cskaoyan_mall_admin where id = #{id}
+  </select>
+
+  <update id="updateAdmin" parameterType="com.cskaoyan.malladmin.bean.admin.AdminItem">
+    update cskaoyan_mall_admin set
+    id = #{adminItem.id},username = #{adminItem.username},password = #{adminItem.password},
+    last_login_ip = #{adminItem.lastLoginIp},
+    last_login_time = #{adminItem.lastLoginTime},
+    avatar = #{adminItem.avatar},
+    add_time = #{adminItem.addTime},
+    update_time = #{adminItem.updateTime},
+    deleted = #{adminItem.deleted},
+    role_ids = #{adminItem.roleIds,typeHandler=com.cskaoyan.malladmin.handler.StringToIntArrayHandler}
+    where id = #{adminItem.id}
+  </update>
+
+  <insert id="insertAdminItem" parameterType="com.cskaoyan.malladmin.bean.admin.AdminItem" >
+    insert into cskaoyan_mall_admin (id, username, password,
+      last_login_ip, last_login_time, avatar,
+      add_time, update_time, deleted,role_ids)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+      #{lastLoginIp,jdbcType=VARCHAR}, #{lastLoginTime,jdbcType=TIMESTAMP}, #{avatar,jdbcType=VARCHAR},
+      #{addTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=BIT},
+      #{roleIds,jdbcType=VARCHAR,typeHandler=com.cskaoyan.malladmin.handler.StringToIntArrayHandler})
+  </insert>
+
   <select id="queryList" resultMap="adminMap">
     select id,username,avatar,role_ids from cskaoyan_mall_admin;
   </select>

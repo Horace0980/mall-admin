@@ -6,6 +6,7 @@ import java.util.Date;
  * @Author: Qiu
  * @Date: 2019/5/22 21:30
  */
+
 public class Keywords {
     int id;
     String keyword;
@@ -56,20 +57,20 @@ public class Keywords {
         this.url = url;
     }
 
-    public boolean isHot() {
+    public boolean getIsHot() {
         return isHot;
     }
 
-    public void setHot(boolean hot) {
-        isHot = hot;
+    public void setIsHot(boolean isHot) {
+        this.isHot = isHot;
     }
 
-    public boolean isDefault() {
+    public boolean getIsDefault() {
         return isDefault;
     }
 
-    public void setDefault(boolean aDefault) {
-        isDefault = aDefault;
+    public void setIsDefault(boolean isDefault) {
+       this.isDefault = isDefault;
     }
 
     public int getSortOrder() {
@@ -96,7 +97,7 @@ public class Keywords {
         this.updateTime = updateTime;
     }
 
-    public boolean isDeleted() {
+    public boolean getIsDeleted() {
         return deleted;
     }
 

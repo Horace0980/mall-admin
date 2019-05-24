@@ -1,4 +1,4 @@
-package com.cskaoyan.malladmin.controller.controller;
+package com.cskaoyan.malladmin.controller.log;
 
 import com.cskaoyan.malladmin.service.log.LogService;
 import com.cskaoyan.malladmin.vo.QueryVo;

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cskaoyan.malladmin.mapper.market.BrandMapper">
+    <select id="queryBrandListCount" resultType="Integer">
+        select count(*) from cskaoyan_mall_brand where deleted = false
+        <if test="id != null">
+            and cast(id as char) like #{id}
+        </if>
+        <if test="name != null">
+            and `name` like #{name}
+        </if>
+    </select>
+    <select id="queryBrandList" resultType="com.cskaoyan.malladmin.bean.market.Brand">
+        select id,`name`,`desc`,pic_url as picUrl,sort_order as sortOrder,floor_price as floorPrice,add_time as addTime,
+         update_time as updateTime,deleted from cskaoyan_mall_brand where deleted = false
+        <if test="id != null">
+            and cast(id as char) like #{id}
+        </if>
+        <if test="name != null">
+            and `name` like #{name}
+        </if>
+    </select>
+    <update id="deleteBrand" parameterType="com.cskaoyan.malladmin.bean.market.Brand">
+        update cskaoyan_mall_brand set deleted = true , update_time = #{updateTime} where id = #{id}
+    </update>
+</mapper>

@@ -1,6 +1,7 @@
 package com.cskaoyan.malladmin.service.admin;
 
 import com.cskaoyan.malladmin.bean.admin.Admin;
+import com.cskaoyan.malladmin.bean.admin.AdminItem;
 import com.cskaoyan.malladmin.vo.QueryVo;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,9 +17,12 @@ public interface AdminService {
 
     QueryVo queryAdminPage(int page,int limit);
 
-    boolean addAdmin(Admin admin);
+    boolean addAdmin(AdminItem admin);
 
     boolean QueryAdminName(String name);
 
+    QueryVo queryAdminPageByName(int page,int limit,String name);
+
+    QueryVo updateAdmin(AdminItem adminItem);
 
 }

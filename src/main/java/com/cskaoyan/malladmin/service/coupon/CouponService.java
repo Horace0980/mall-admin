@@ -12,4 +12,10 @@ public interface CouponService {
     QueryVo queryConditions(QueryIn queryIn, String name, String type, String status);
 
     QueryVo addNew(Coupon coupon);
+
+    QueryVo getCouponById(String id);
+
+    QueryVo updateCoupon(Coupon coupon);
+
+    QueryVo deleteCoupon(Coupon coupon);
 }

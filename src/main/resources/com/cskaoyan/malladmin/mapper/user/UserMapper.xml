@@ -1,25 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.erp.mapper.schedule.CustomMapper">
-    <resultMap id="BaseResultMap" type="com.erp.bean.schedule.Custom">
-        <id column="id" jdbcType="INTEGER" property="user_id" />
+<mapper namespace="com.cskaoyan.malladmin.mapper.user.UserMapper">
+    <resultMap id="BaseResultMap" type="com.cskaoyan.malladmin.bean.user.User">
+        <id column="id" jdbcType="INTEGER" property="id" />
         <result column="username" jdbcType="VARCHAR" property="username" />
         <result column="password" jdbcType="VARCHAR" property="password" />
         <result column="gender" jdbcType="TINYINT" property="gender" />
-        <result column="birthday" jdbcType="DATE" property="addTime" />
-        <result column="last_login_time" jdbcType="DATETIME" property="lastLoginTime" />
         <result column="last_login_ip" jdbcType="VARCHAR" property="lastLoginIp" />
         <result column="user_level" jdbcType="TINYINT" property="userLevel" />
-        <result column="nickname" jdbcType="INTEGER" property="nickName" />
+        <result column="nickname" jdbcType="INTEGER" property="nickname" />
         <result column="mobile" jdbcType="VARCHAR" property="mobile" />
         <result column="avatar" jdbcType="VARCHAR" property="avatar" />
-        <result column="weixin_openid" jdbcType="VARCHAR" property="weiXinOpenId" />
-        <result column="status" jdbcType="TINYINT" property="sessionKey" />
-        <result column="add_time" jdbcType="DATETIME" property="status" />
-        <result column="update_time" jdbcType="DATETIME" property="updateTime" />
-        <result column="deleted" jdbcType="TINYINT" property="delete" />
+        <result column="weixin_openid" jdbcType="VARCHAR" property="weixinOpenid" />
+        <result column="status" jdbcType="TINYINT" property="status" />
+        <result column="birthday" jdbcType="TIMESTAMP" javaType="java.sql.Date" property="birthday" />
+
+        <result column="last_login_time"  jdbcType="TIMESTAMP" javaType="java.util.Date" property="lastLoginTime" />
+        <result column="add_time" jdbcType="TIMESTAMP" javaType="java.util.Date" property="addTime" />
+        <result column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" property="updateTime" />
+
+        <result column="deleted" jdbcType="TINYINT" property="deleted" />
     </resultMap>
+    <sql id="base_sql">
+        id,status,add_time,birthday,update_time,deleted,username,password,gender,last_login_time,last_login_ip,user_level,nickname,mobile,avatar,weixin_openid
+    </sql>
+
     <select id="selectAllUser" resultMap="BaseResultMap">
-      select * from cskaoyan_mall_user
+      select
+      <include refid="base_sql"/>
+      from cskaoyan_mall_user where 1=1
+      <if test="username!=null and username !=''">
+          and username like #{username}
+      </if>
+        <if test="mobile!=null and mobile !=''">
+            and mobile = #{mobile}
+        </if>
+      order by #{sort} #{order} limit #{start},#{rows}
     </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="base_sql"/>
+        from cskaoyan_mall_user
+    </select>
+
+    <select id="queryUserCount" resultType="int">
+        select count(id) from  cskaoyan_mall_user
+    </select>
+
+    <select id="queryUserById" resultMap="BaseResultMap">
+        select
+        <include refid="base_sql"/>
+        from  cskaoyan_mall_user where id=#{id}
+    </select>
+
+
 </mapper>
