@@ -23,10 +23,9 @@ public class StorageServiceImpl implements StorageService {
 
   @Override
   public QueryVo queryPage(int page,int limit) {
+    List<Storage> storages = storageMapper.queryList();
     PageHelper.startPage(page,limit);
     QueryVo queryVo = new QueryVo();
-
-    List<Storage> storages = storageMapper.queryList();
 
     StroageData stroageData = new StroageData();
     stroageData.setItems(storages);
