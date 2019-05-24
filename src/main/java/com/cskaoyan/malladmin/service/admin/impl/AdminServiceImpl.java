@@ -76,8 +76,9 @@ public class AdminServiceImpl implements AdminService {
 
   @Override
   public QueryVo queryAdminPageByName(int page, int limit, String name) {
+
     List<AdminItem> adminItem = adminMapper.queryByUsername(name);
-    PageHelper.startPage(page,limit);
+
     AdminData adminData = new AdminData();
 
     adminData.setTotal(adminItem.size());
@@ -86,18 +87,19 @@ public class AdminServiceImpl implements AdminService {
     queryVo.setErrmsg("成功");
     queryVo.setErrno(0);
     queryVo.setData(adminData);
-
+    PageHelper.startPage(page,limit);
     return queryVo;
   }
 
   @Override
   public QueryVo queryAdminPage(int page, int limit) {
+
+
     //获取链表
     List<AdminItem> admins = adminMapper.queryList();
 
     //分页
     PageHelper.startPage(page,limit);
-
     //封装data对象
     AdminData adminData = new AdminData();
     adminData.setItems(admins);
@@ -108,6 +110,7 @@ public class AdminServiceImpl implements AdminService {
     queryVo.setErrmsg("成功");
     queryVo.setErrno(0);
     queryVo.setData(adminData);
+
 
     return queryVo;
   }

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cskaoyan.malladmin.mapper.log.LogMapper">
   <select id="queryList" resultMap="BaseResultMap">
-    select * from cskaoyan_mall_log;
+    select * from cskaoyan_mall_log
   </select>
   <resultMap id="BaseResultMap" type="com.cskaoyan.malladmin.bean.log.Log">
     <id column="id" jdbcType="INTEGER" property="id" />
