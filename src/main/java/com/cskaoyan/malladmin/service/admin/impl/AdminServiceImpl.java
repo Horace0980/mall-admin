@@ -34,7 +34,6 @@ public class AdminServiceImpl implements AdminService {
 
   @Override
   public boolean addAdmin(AdminItem admin) {
-    System.out.println(admin);
     int i = adminMapper.insertAdminItem(admin);
     return i!=0;
   }

@@ -2,8 +2,9 @@ package com.cskaoyan.malladmin.mapper.log;
 
 import com.cskaoyan.malladmin.bean.log.Log;
 import com.cskaoyan.malladmin.bean.log.LogExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface LogMapper {
     long countByExample(LogExample example);
@@ -29,4 +30,6 @@ public interface LogMapper {
     int updateByPrimaryKey(Log record);
 
     List<Log> queryList();
+
+    List<Log> queryByName(@Param("name") String name);
 }

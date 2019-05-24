@@ -22,6 +22,23 @@ public class LogServiceImpl implements LogService {
   LogMapper logMapper;
 
   @Override
+  public QueryVo queryRolePageByName(int page, int limit, String name) {
+    List<Log> list = logMapper.queryByName(name);
+    PageHelper.startPage(page,limit);
+
+    LogData logData = new LogData();
+    logData.setTotal(list.size());
+    logData.setItems(list);
+
+    QueryVo queryVo = new QueryVo();
+    queryVo.setErrno(0);
+    queryVo.setErrmsg("成功");
+    queryVo.setData(logData);
+
+    return queryVo;
+  }
+
+  @Override
   public QueryVo queryPage(int page, int limit) {
 
     List<Log> logs = logMapper.queryList();
