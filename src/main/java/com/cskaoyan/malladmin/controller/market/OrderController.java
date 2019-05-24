@@ -1,16 +1,16 @@
 package com.cskaoyan.malladmin.controller.market;
 
+import com.cskaoyan.malladmin.bean.goods.Comment;
 import com.cskaoyan.malladmin.bean.market.Order;
 import com.cskaoyan.malladmin.service.market.OrderService;
 import com.cskaoyan.malladmin.vo.QueryIn;
 import com.cskaoyan.malladmin.vo.QueryVo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * @Author: Qiu
@@ -38,5 +38,13 @@ public class OrderController {
     public Order getOrderDetail(String id){
         Order getOrderDetail = orderService.getOrderDetail(Integer.parseInt(id));
         return getOrderDetail;
+    }
+
+    @RequestMapping("reply")
+    @ResponseBody
+    public QueryVo reply(@RequestBody Comment comment){
+        int id = Integer.parseInt(comment.getCommentId());
+        String content = comment.getContent();
+        return orderService.reply(id,content);
     }
 }

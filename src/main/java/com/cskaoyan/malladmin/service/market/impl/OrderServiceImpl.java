@@ -1,6 +1,7 @@
 package com.cskaoyan.malladmin.service.market.impl;
 
 import com.cskaoyan.malladmin.bean.market.Order;
+import com.cskaoyan.malladmin.mapper.goods.CommentMapper;
 import com.cskaoyan.malladmin.mapper.market.OrderMapper;
 import com.cskaoyan.malladmin.service.market.OrderService;
 import com.cskaoyan.malladmin.vo.QueryIn;
@@ -21,6 +22,9 @@ import java.util.List;
 public class OrderServiceImpl implements OrderService {
     @Autowired
     OrderMapper orderMapper;
+
+    @Autowired
+    CommentMapper commentMapper;
 
     @Override
     public QueryVo getOrderList(QueryIn queryIn, String userId, String orderSn, String orderStatusArray) {
@@ -88,5 +92,11 @@ public class OrderServiceImpl implements OrderService {
         }
 
         return status;
+    }
+
+    @Override
+    public QueryVo reply(int id, String content) {
+        int i = commentMapper.updateContentById(id, content);
+        return new QueryVo(0,"","成功");
     }
 }
