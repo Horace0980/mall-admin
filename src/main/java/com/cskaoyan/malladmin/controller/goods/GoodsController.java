@@ -1,6 +1,6 @@
 package com.cskaoyan.malladmin.controller.goods;
 
-import com.cskaoyan.malladmin.bean.goods.Goods;
+import com.cskaoyan.malladmin.bean.goods.*;
 import com.cskaoyan.malladmin.service.goods.GoodsService;
 import com.cskaoyan.malladmin.vo.QueryIn;
 import com.cskaoyan.malladmin.vo.QueryVo;
@@ -22,8 +22,8 @@ public class GoodsController {
 
     @RequestMapping("/list")
     @ResponseBody
-    public QueryVo goodslist(QueryIn queryIn,Integer id,String name){
-        return goodsService.allList(queryIn,id,name);
+    public QueryVo goodslist(QueryIn queryIn,Integer goodsSn,String name){
+        return goodsService.allList(queryIn,goodsSn,name);
     }
 
     @RequestMapping("/delete")
@@ -44,4 +44,15 @@ public class GoodsController {
         return goodsService.catAndBrand();
     }
 
+    @RequestMapping("/create")
+    @ResponseBody
+    public QueryVo insert(@RequestBody BigData bigData){
+        return goodsService.inserts(bigData);
+    }
+
+    @RequestMapping("/update")
+    @ResponseBody
+    public QueryVo updates(@RequestBody UpdateData updateData){
+        return goodsService.updates(updateData);
+    }
 }
