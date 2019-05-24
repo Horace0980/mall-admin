@@ -18,5 +18,5 @@ public interface CategoryMapper {
 
     int updateCategory(Category category);
 
-
+    Category selectById(int id);
 }
