@@ -41,7 +41,7 @@ public class AdminController {
 
     @RequestMapping("admin/list")
     public QueryVo adminList(int page, int limit,String username){
-      if(username.length()!=0){
+      if(username!=null){
         QueryVo queryVo = adminService.queryAdminPageByName(page, limit, "%"+username+"%");
         return queryVo;
       }

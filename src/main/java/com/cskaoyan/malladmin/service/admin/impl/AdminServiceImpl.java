@@ -59,7 +59,7 @@ public class AdminServiceImpl implements AdminService {
   @Override
   public QueryVo updateAdmin(AdminItem adminItem) {
     int i = adminMapper.updateAdmin(adminItem);
-    adminItem.setAddTime(new Date());
+    adminItem.setUpdateTime(new Date());
     QueryVo queryVo = new QueryVo();
     if(i==0){
       queryVo.setErrmsg("更新失败");
