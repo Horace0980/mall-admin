@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cskaoyan.malladmin.mapper.market.CategoryMapper">
+    <select id="getList" resultType="com.cskaoyan.malladmin.bean.market.Category">
+        select id, `name`,pic_url as picUrl,icon_url as iconUrl,`level`, keywords,`desc` from cskaoyan_mall_category where pid = #{pid}
+    </select>
+
+</mapper>

@@ -6,17 +6,18 @@ import java.util.List;
  * @Author: Qiu
  * @Date: 2019/5/22 20:56
  */
+
 public class Region {
     int id;
     String name;
-    boolean type;
+    short type;
     int code;
     List<Region> children;
 
     public Region() {
     }
 
-    public Region(int id, String name, boolean type, int code, List<Region> children) {
+    public Region(int id, String name, short type, int code, List<Region> children) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -40,11 +41,11 @@ public class Region {
         this.name = name;
     }
 
-    public boolean getType() {
+    public short getType() {
         return type;
     }
 
-    public void setType(boolean type) {
+    public void setType(short type) {
         this.type = type;
     }
 

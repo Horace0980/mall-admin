@@ -30,7 +30,7 @@ public class Coupon implements Serializable {
 
     private Short goodsType;
 
-    private String goodsValue;
+    private String[] goodsValue;
 
     private String code;
 
@@ -135,13 +135,13 @@ public class Coupon implements Serializable {
     public void setGoodsType(Short goodsType) {
         this.goodsType = goodsType;
     }
-    @JsonIgnore
-    public String getGoodsValue() {
+
+    public String[] getGoodsValue() {
         return goodsValue;
     }
-    @JsonIgnore
-    public void setGoodsValue(String goodsValue) {
-        this.goodsValue = goodsValue == null ? null : goodsValue.trim();
+
+    public void setGoodsValue(String[] goodsValue) {
+        this.goodsValue = goodsValue;
     }
 
     public String getCode() {

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cskaoyan.malladmin.mapper.user.FootprintMapper">
+    <resultMap id="BaseResultMap" type="com.cskaoyan.malladmin.bean.user.Footprint">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="user_id" jdbcType="INTEGER" property="userId" />
+        <result column="goods_id" jdbcType="INTEGER" property="goodsId" />
+
+        <result column="deleted" jdbcType="TINYINT" property="deleted" />
+
+        <result column="add_time" jdbcType="TIMESTAMP" javaType="java.util.Date" property="addTime" />
+        <result column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" property="updateTime" />
+
+    </resultMap>
+    <sql id="base_sql">
+        id,user_id,goods_id,deleted,add_time,update_time
+    </sql>
+
+    <select id="selectAllFootprint" resultMap="BaseResultMap">
+      select
+      <include refid="base_sql"/>
+      from cskaoyan_mall_footprint where 1=1
+        <if test="goodsid!=null and goodsid!= 0 ">
+            and goods_id = #{goodsid}
+        </if>
+        <if test="userid!=null and userid!= 0 ">
+            and user_id = #{userid}
+        </if>
+      order by #{sort} #{order}
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="base_sql"/>
+        from cskaoyan_mall_footprint
+    </select>
+
+    <select id="queryFootprintCount" resultType="int">
+        select count(id) from  cskaoyan_mall_footprint where 1=1
+        <if test="goodsid!=null and goodsid!= 0 ">
+            and goods_id = #{goodsid}
+        </if>
+        <if test="userid!=null and userid!= 0 ">
+            and user_id = #{userid}
+        </if>
+    </select>
+
+
+</mapper>

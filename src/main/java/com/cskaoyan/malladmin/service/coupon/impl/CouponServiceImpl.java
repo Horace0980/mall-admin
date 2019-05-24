@@ -42,10 +42,9 @@ public class CouponServiceImpl implements CouponService {
         List<Coupon> coupons = couponMapper.selectByExample(couponExample);
         HashMap<String, Object> map = new HashMap<>();
         int limit = queryIn.getLimit();
-        map.put("limit", limit);
-        map.put("list", coupons);
-        map.put("page", queryIn.getPage());
-        map.put("pages", l % limit == 0 ? l / limit : (l / limit + 1));
+
+        map.put("items", coupons);
+
         map.put("total", l);
         return new QueryVo(0, map, "成功");
     }
@@ -63,5 +62,29 @@ public class CouponServiceImpl implements CouponService {
 
         return new QueryVo(0, coupon, "成功");
 
+    }
+
+    @Override
+    public QueryVo getCouponById(String id) {
+        Coupon coupon = couponMapper.selectByPrimaryKey(Integer.parseInt(id));
+        return new QueryVo(0,coupon,"成功");
+    }
+
+    @Override
+    public QueryVo updateCoupon(Coupon coupon) {
+        coupon.setUpdateTime(new Date());
+        int update = couponMapper.updateByPrimaryKeySelective(coupon);
+        if (update==1){
+            return new QueryVo(0,couponMapper.selectByPrimaryKey(coupon.getId()),"成功");
+        }
+        return new QueryVo(605,null,"网络异常");
+    }
+
+    @Override
+    public QueryVo deleteCoupon(Coupon coupon) {
+        coupon.setUpdateTime(new Date());
+        coupon.setDeleted(true);
+        couponMapper.updateByPrimaryKeySelective(coupon);
+        return new QueryVo(0,null,"成功");
     }
 }
