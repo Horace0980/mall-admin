@@ -8,7 +8,7 @@
     <result column="role_ids" property="roleIds" typeHandler="com.cskaoyan.malladmin.handler.StringToIntArrayHandler"/>
   </resultMap>
   <select id="queryList" resultMap="adminMap">
-    select id,username,avatar,role_ids from cskaoyan_mall_admin;
+    select id,username,avatar,role_ids from cskaoyan_mall_admin
   </select>
   <select id="selectByUsername" resultMap="BaseResultMap">
     select

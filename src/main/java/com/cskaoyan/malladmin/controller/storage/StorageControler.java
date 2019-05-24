@@ -22,4 +22,6 @@ public class StorageControler {
     QueryVo queryVo = storageService.queryPage(page, limit);
     return queryVo;
   }
+
+
 }

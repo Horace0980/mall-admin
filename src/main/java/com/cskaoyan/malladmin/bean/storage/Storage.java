@@ -21,6 +21,21 @@ public class Storage {
 
     private Boolean deleted;
 
+    public Storage() {
+    }
+
+    public Storage(Integer id, String key, String name, String type, Integer size, String url, Date addTime, Date updateTime, Boolean deleted) {
+        this.id = id;
+        this.key = key;
+        this.name = name;
+        this.type = type;
+        this.size = size;
+        this.url = url;
+        this.addTime = addTime;
+        this.updateTime = updateTime;
+        this.deleted = deleted;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -91,5 +106,20 @@ public class Storage {
 
     public void setDeleted(Boolean deleted) {
         this.deleted = deleted;
+    }
+
+    @Override
+    public String toString() {
+        return "Storage{" +
+                "id=" + id +
+                ", key='" + key + '\'' +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", size=" + size +
+                ", url='" + url + '\'' +
+                ", addTime=" + addTime +
+                ", updateTime=" + updateTime +
+                ", deleted=" + deleted +
+                '}';
     }
 }

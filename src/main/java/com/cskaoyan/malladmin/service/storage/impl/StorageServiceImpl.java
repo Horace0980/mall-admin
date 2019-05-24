@@ -1,5 +1,6 @@
 package com.cskaoyan.malladmin.service.storage.impl;
 
+import com.cskaoyan.malladmin.bean.Image;
 import com.cskaoyan.malladmin.bean.storage.Storage;
 import com.cskaoyan.malladmin.bean.storage.StroageData;
 import com.cskaoyan.malladmin.mapper.storage.StorageMapper;
@@ -35,5 +36,11 @@ public class StorageServiceImpl implements StorageService {
     queryVo.setErrmsg("成功");
     queryVo.setErrno(0);
     return queryVo;
+  }
+
+  @Override
+  public boolean insertStorage(Storage storage) {
+    int insert = storageMapper.insertStorage(storage);
+    return insert == 1;
   }
 }

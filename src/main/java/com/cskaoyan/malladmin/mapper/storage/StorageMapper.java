@@ -29,4 +29,6 @@ public interface StorageMapper {
     int updateByPrimaryKey(Storage record);
 
     List<Storage> queryList();
+
+    int insertStorage(Storage storage);
 }
