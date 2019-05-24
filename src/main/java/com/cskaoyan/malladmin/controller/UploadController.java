@@ -1,6 +1,5 @@
 package com.cskaoyan.malladmin.controller;
 
-import com.cskaoyan.malladmin.bean.Image;
 import com.cskaoyan.malladmin.bean.storage.Storage;
 import com.cskaoyan.malladmin.service.storage.StorageService;
 import com.cskaoyan.malladmin.utils.UploadUtils;

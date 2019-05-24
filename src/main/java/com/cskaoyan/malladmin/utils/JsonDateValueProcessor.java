@@ -1,9 +1,10 @@
-package com.cskaoyan.malladmin.util;
+package com.cskaoyan.malladmin.utils;
+
+import net.sf.json.JsonConfig;
+import net.sf.json.processors.JsonValueProcessor;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import net.sf.json.JsonConfig;
-import net.sf.json.processors.JsonValueProcessor;
 
 public class JsonDateValueProcessor implements JsonValueProcessor{
   private  String datePattern = "yyyy-MM-dd HH:mm:ss";//默认样式，可以在构造方法中修改

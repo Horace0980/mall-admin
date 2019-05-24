@@ -2,7 +2,7 @@ package com.cskaoyan.malladmin.controller.role;
 
 import com.cskaoyan.malladmin.bean.role.Role;
 import com.cskaoyan.malladmin.service.role.RoleService;
-import com.cskaoyan.malladmin.util.JsonDateValueProcessor;
+import com.cskaoyan.malladmin.utils.JsonDateValueProcessor;
 import com.cskaoyan.malladmin.vo.QueryVo;
 import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
