@@ -5,7 +5,9 @@ import com.cskaoyan.malladmin.bean.admin.AdminItem;
 import com.cskaoyan.malladmin.service.admin.AdminService;
 import com.cskaoyan.malladmin.vo.QueryVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -41,7 +43,7 @@ public class AdminController {
 
     @RequestMapping("admin/list")
     public QueryVo adminList(int page, int limit,String username){
-      if(username!= null){
+      if(username!=null){
         QueryVo queryVo = adminService.queryAdminPageByName(page, limit, "%"+username+"%");
         return queryVo;
       }

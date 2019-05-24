@@ -10,6 +10,7 @@ import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -57,6 +58,71 @@ public class RoleServiceImpl implements RoleService {
   }
 
   @Override
+  public QueryVo updateRole(Role role) {
+
+    QueryVo queryVo = new QueryVo();
+
+    //设定更新时间
+    role.setUpdateTime(new Date());
+
+    int i = roleMapper.updateRole(role);
+
+    if(i==0){
+      queryVo.setErrmsg("更新异常");
+      queryVo.setErrno(0);
+    }
+
+    //成功封装并返回
+    queryVo.setErrmsg("成功");
+    queryVo.setErrno(0);
+    return queryVo;
+  }
+
+  @Override
+  public QueryVo deleteRole(Integer id) {
+    QueryVo queryVo = new QueryVo();
+    int i = roleMapper.deleteById(id);
+    if(i==0){
+      queryVo.setErrno(0);
+      queryVo.setErrmsg("删除失败");
+    }
+    queryVo.setErrmsg("成功");
+    queryVo.setErrno(0);
+    return queryVo;
+  }
+
+  @Override
+  public QueryVo insertRole(Role role) {
+
+    //检测角色重复
+    QueryVo queryVo = new QueryVo();
+    List<Role> rolesOld = roleMapper.queryByName(role.getName());
+    if(rolesOld.size()!=0){
+      queryVo.setErrno(640);
+      queryVo.setErrmsg("角色已经存在");
+      return queryVo;
+    }
+
+    //设定插入时间
+    role.setAddTime(new Date());
+
+    //插入角色
+    int i = roleMapper.insertRole(role);
+    if(i==0){
+      queryVo.setErrmsg("插入异常");
+      queryVo.setErrno(0);
+    }
+
+    //查询并封装
+    Role rolesNew = roleMapper.queryOneByName(role.getName());
+    queryVo.setData(rolesNew);
+    queryVo.setErrmsg("成功");
+    queryVo.setErrno(0);
+
+    return queryVo;
+  }
+
+  @Override
   public QueryVo queryRolePage(int page, int limit) {
     List<Role> roles = roleMapper.queryList();
     PageHelper.startPage(page, limit);
@@ -72,4 +138,5 @@ public class RoleServiceImpl implements RoleService {
 
     return queryVo;
   }
+
 }

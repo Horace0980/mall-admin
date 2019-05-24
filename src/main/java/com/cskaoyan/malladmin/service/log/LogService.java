@@ -1,7 +1,6 @@
 package com.cskaoyan.malladmin.service.log;
 
 import com.cskaoyan.malladmin.vo.QueryVo;
-import org.springframework.stereotype.Service;
 
 /**
  * @Author: Dankin
@@ -9,4 +8,6 @@ import org.springframework.stereotype.Service;
  */
 public interface LogService {
   public QueryVo queryPage(int page,int limit);
+
+  QueryVo queryRolePageByName(int page, int limit, String s);
 }

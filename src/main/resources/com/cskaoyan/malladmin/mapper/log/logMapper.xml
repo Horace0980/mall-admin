@@ -4,6 +4,9 @@
   <select id="queryList" resultMap="BaseResultMap">
     select * from cskaoyan_mall_log
   </select>
+  <select id="queryByName" resultMap="BaseResultMap">
+    select * from cskaoyan_mall_log where `admin` like #{name}
+  </select>
   <resultMap id="BaseResultMap" type="com.cskaoyan.malladmin.bean.log.Log">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="admin" jdbcType="VARCHAR" property="admin" />

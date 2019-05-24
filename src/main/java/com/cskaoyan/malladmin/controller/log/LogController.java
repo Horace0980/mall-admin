@@ -16,7 +16,11 @@ public class LogController {
   LogService logService;
 
   @RequestMapping("log/list")
-  public QueryVo queryPage(int page,int limit){
+  public QueryVo queryPage(int page,int limit,String name){
+    if(name!=null){
+      QueryVo queryVo = logService.queryRolePageByName(page,limit,"%"+name+"%");
+      return queryVo;
+    }
     QueryVo queryVo = logService.queryPage(page, limit);
     return queryVo;
   }
