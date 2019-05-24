@@ -1,6 +1,5 @@
 package com.cskaoyan.malladmin.controller.market;
 
-import com.cskaoyan.malladmin.bean.market.Order;
 import com.cskaoyan.malladmin.service.market.OrderService;
 import com.cskaoyan.malladmin.vo.QueryIn;
 import com.cskaoyan.malladmin.vo.QueryVo;
@@ -35,8 +34,8 @@ public class OrderController {
         return getOrderList;
     }
     @RequestMapping("detail")
-    public Order getOrderDetail(String id){
-        Order getOrderDetail = orderService.getOrderDetail(Integer.parseInt(id));
+    public QueryVo getOrderDetail(String id){
+        QueryVo getOrderDetail = orderService.getOrderDetail(Integer.parseInt(id));
         return getOrderDetail;
     }
 }
