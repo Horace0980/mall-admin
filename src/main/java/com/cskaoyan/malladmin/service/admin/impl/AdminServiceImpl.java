@@ -1,6 +1,9 @@
 package com.cskaoyan.malladmin.service.admin.impl;
 
-import com.cskaoyan.malladmin.bean.admin.*;
+import com.cskaoyan.malladmin.bean.admin.Admin;
+import com.cskaoyan.malladmin.bean.admin.AdminData;
+import com.cskaoyan.malladmin.bean.admin.AdminInfo;
+import com.cskaoyan.malladmin.bean.admin.AdminItem;
 import com.cskaoyan.malladmin.bean.role.Role;
 import com.cskaoyan.malladmin.mapper.admin.AdminMapper;
 import com.cskaoyan.malladmin.mapper.role.RoleMapper;
@@ -8,7 +11,6 @@ import com.cskaoyan.malladmin.service.admin.AdminService;
 import com.cskaoyan.malladmin.vo.QueryVo;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -59,7 +61,7 @@ public class AdminServiceImpl implements AdminService {
   @Override
   public QueryVo updateAdmin(AdminItem adminItem) {
     int i = adminMapper.updateAdmin(adminItem);
-    adminItem.setAddTime(new Date());
+    adminItem.setUpdateTime(new Date());
     QueryVo queryVo = new QueryVo();
     if(i==0){
       queryVo.setErrmsg("更新失败");
