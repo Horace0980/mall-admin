@@ -50,11 +50,12 @@ public class AdminServiceImpl implements AdminService {
 
   @Override
   public QueryVo queryAdminPage(int page, int limit) {
-    //分页
-    PageHelper.startPage(page,limit);
+      //获取链表
+      List<AdminItem> admins = adminMapper.queryList();
 
-    //获取链表
-    List<AdminItem> admins = adminMapper.queryList();
+      //分页
+      PageHelper.startPage(page,limit);
+
 
     //封装data对象
     AdminData adminData = new AdminData();

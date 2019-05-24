@@ -22,11 +22,4 @@ public class StorageControler {
     QueryVo queryVo = storageService.queryPage(page, limit);
     return queryVo;
   }
-
-  //创建对象
-  @RequestMapping("storage/create")
-  public  QueryVo storageCreate(){
-
-    return null;
-  }
 }
