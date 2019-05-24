@@ -30,6 +30,12 @@ public class Order {
     Integer orderStatus;
     Date updateTime;
     int userId;
+    String payId;
+    Date payTime;
+    String shipSn;
+    String shipChannel;
+    Date shipTime;
+    Date confirmTime;
 
     public Order(BigDecimal actualPrice, Date addTime, String address, Integer comments, String consignee, BigDecimal couponPrice, boolean deleted, Date endTime, BigDecimal freightPrice, BigDecimal goodsPrice, BigDecimal grouponPrice, int id, BigDecimal integralPrice, String message, String mobile, BigDecimal orderPrice, String orderSn, Integer orderStatus, Date updateTime, int userId) {
         this.actualPrice = actualPrice;

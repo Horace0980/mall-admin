@@ -2,7 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cskaoyan.malladmin.mapper.market.CategoryMapper">
     <select id="getList" resultType="com.cskaoyan.malladmin.bean.market.Category">
-        select id, `name`,pic_url as picUrl,icon_url as iconUrl,`level`, keywords,`desc` from cskaoyan_mall_category where pid = #{pid}
+        select id, `name`,pic_url as picUrl,icon_url as iconUrl,`level`, keywords,`desc`,pid from cskaoyan_mall_category where pid = #{pid} and deleted = false
     </select>
 
+    <update id="deleteCategory" parameterType="com.cskaoyan.malladmin.bean.market.Category">
+        update cskaoyan_mall_category set deleted = true , update_time = #{updateTime} where id = #{id}
+    </update>
+    <insert id="createCategory" parameterType="com.cskaoyan.malladmin.bean.market.Category">
+        insert into cskaoyan_mall_category (id,`name`,keywords,`desc`,pid,icon_url,pic_url,`level`,sort_order,add_time,update_time,deleted)
+        values (#{id},#{name},#{keywords},#{desc},#{pid},#{iconUrl},#{picUrl},#{level},0,#{addTime},#{updateTime},false)
+    </insert>
+    <update id="updateCategory" parameterType="com.cskaoyan.malladmin.bean.market.Category">
+        update cskaoyan_mall_category set update_time = #{updateTime},`name` =#{name},`desc` =#{desc},keywords = #{keywords},
+        `level` =#{level} ,pid = #{pid},icon_url =#{iconUrl},pic_url=#{picUrl} where id = #{id}
+    </update>
+
+    <select id="selectById" resultType="com.cskaoyan.malladmin.bean.market.Category">
+        select id, `name`,pic_url as picUrl,icon_url as iconUrl,`level`, keywords,`desc`,pid from cskaoyan_mall_category where id = #{id} and deleted = false
+    </select>
 </mapper>

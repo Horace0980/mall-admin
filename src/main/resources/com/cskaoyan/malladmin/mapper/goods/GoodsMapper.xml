@@ -155,6 +155,9 @@
       #{isNew,jdbcType=BIT}, #{isHot,jdbcType=BIT}, #{unit,jdbcType=VARCHAR}, #{counterPrice,jdbcType=DECIMAL}, 
       #{retailPrice,jdbcType=DECIMAL}, #{addTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
       #{deleted,jdbcType=BIT}, #{detail,jdbcType=LONGVARCHAR})
+    <selectKey keyColumn="id" keyProperty="id" resultType="int" order="AFTER">
+      select last_insert_id();
+    </selectKey>
   </insert>
   <insert id="insertSelective" parameterType="com.cskaoyan.malladmin.bean.goods.Goods">
     insert into cskaoyan_mall_goods

@@ -11,4 +11,12 @@ import java.util.List;
 public interface CategoryMapper {
 
     List<Category> getList(int pid);
+
+    int deleteCategory(Category category);
+
+    int createCategory(Category category);
+
+    int updateCategory(Category category);
+
+    Category selectById(int id);
 }
