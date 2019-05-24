@@ -59,5 +59,8 @@
         from  cskaoyan_mall_user where id=#{id}
     </select>
 
+  <select id="getUserTotal" resultType="Integer">
+    select count(*) from cskaoyan_mall_user where deleted = false
+  </select>
 
 </mapper>

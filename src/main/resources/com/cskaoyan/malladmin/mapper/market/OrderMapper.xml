@@ -41,4 +41,7 @@
         where id = #{id}
 
     </select>
+  <select id="getOrderTotal" resultType="Integer">
+    select count(*) from cskaoyan_mall_order where deleted = false
+  </select>
 </mapper>
