@@ -15,4 +15,6 @@ public interface OrderMapper {
     List<Order> getOrderList(@Param("userId")String userId, @Param("orderSn") String orderSn, List<String> statusList);
 
     Order getOrderDetail(int id);
+
+  int getOrderTotal();
 }
