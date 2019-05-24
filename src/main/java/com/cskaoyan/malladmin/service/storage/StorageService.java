@@ -11,5 +11,9 @@ import com.cskaoyan.malladmin.vo.QueryVo;
 public interface StorageService {
   QueryVo queryPage(int page,int limit);
 
-    boolean insertStorage(Storage storage);
+  boolean insertStorage(Storage storage);
+
+  boolean updateStorage(Storage storage);
+
+  boolean deleteStorage(Storage storage);
 }

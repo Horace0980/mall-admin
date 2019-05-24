@@ -269,7 +269,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.cskaoyan.malladmin.bean.storage.Storage">
     update cskaoyan_mall_storage
-    set key = #{key,jdbcType=VARCHAR},
+    set `key` = #{key,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
       type = #{type,jdbcType=VARCHAR},
       size = #{size,jdbcType=INTEGER},

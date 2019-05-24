@@ -43,4 +43,16 @@ public class StorageServiceImpl implements StorageService {
     int insert = storageMapper.insertStorage(storage);
     return insert == 1;
   }
+
+  @Override
+  public boolean updateStorage(Storage storage) {
+    int update = storageMapper.updateByPrimaryKey(storage);
+    return update == 1;
+  }
+
+  @Override
+  public boolean deleteStorage(Storage storage) {
+    int delete = storageMapper.updateByPrimaryKey(storage);
+    return delete == 1;
+  }
 }
