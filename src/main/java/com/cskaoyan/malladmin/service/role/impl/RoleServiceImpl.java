@@ -33,6 +33,30 @@ public class RoleServiceImpl implements RoleService {
   }
 
   @Override
+  public QueryVo queryRolePageByName(int page,int limit,String name) {
+
+    QueryVo queryVo = new QueryVo();
+    RoleData roleData = new RoleData();
+
+    //名称模糊查询
+    List<Role> roles = roleMapper.queryByName(name);
+
+    //分页
+    PageHelper.startPage(page,limit);
+
+    //roleData存入信息
+    roleData.setItems(roles);
+    roleData.setTotal(roles.size());
+
+    //queryVo存入信息
+    queryVo.setErrmsg("成功");
+    queryVo.setErrno(0);
+    queryVo.setData(roleData);
+
+    return queryVo;
+  }
+
+  @Override
   public QueryVo queryRolePage(int page, int limit) {
     List<Role> roles = roleMapper.queryList();
     PageHelper.startPage(page, limit);

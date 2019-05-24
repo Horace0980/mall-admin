@@ -45,6 +45,7 @@ public class UploadController {
             queryVo.setData(image);
             queryVo.setErrno(0);
             queryVo.setErrmsg("success");
+
         } catch (IOException e) {
             e.printStackTrace();
         }

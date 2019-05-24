@@ -20,7 +20,9 @@ public class StringToIntArrayHandler extends BaseTypeHandler<int[]> {
     for (int id:ints) {
       sb.append("[").append(id).append("]");
     }
-    String substring = sb.toString().substring(sb.length() - 1);
+    String s = sb.toString();
+    int length = sb.length();
+    String substring = s.substring(0,length);
     System.out.println(substring);
     preparedStatement.setString(index,substring);
   }
@@ -50,7 +52,7 @@ public class StringToIntArrayHandler extends BaseTypeHandler<int[]> {
     String replace = s1.replace(",", "");
     String[] split = replace.split("");
     int length = split.length;
-    int[] m = new int[length];
+      int[] m = new int[length];
     for (int i = 0; i < length; i++) {
       m[i] = Integer.parseInt(split[i]);
     }

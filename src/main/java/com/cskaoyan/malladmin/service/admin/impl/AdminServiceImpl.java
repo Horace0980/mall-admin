@@ -1,9 +1,6 @@
 package com.cskaoyan.malladmin.service.admin.impl;
 
-import com.cskaoyan.malladmin.bean.admin.Admin;
-import com.cskaoyan.malladmin.bean.admin.AdminData;
-import com.cskaoyan.malladmin.bean.admin.AdminInfo;
-import com.cskaoyan.malladmin.bean.admin.AdminItem;
+import com.cskaoyan.malladmin.bean.admin.*;
 import com.cskaoyan.malladmin.bean.role.Role;
 import com.cskaoyan.malladmin.mapper.admin.AdminMapper;
 import com.cskaoyan.malladmin.mapper.role.RoleMapper;
@@ -17,10 +14,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * @Author: yyc
@@ -37,9 +31,23 @@ public class AdminServiceImpl implements AdminService {
     private RoleMapper roleMapper;
 
   @Override
-  public boolean addAdmin(Admin admin) {
-    int insert = adminMapper.insert(admin);
-    return insert!=0;
+  public boolean addAdmin(AdminItem admin) {
+    System.out.println(admin);
+    int i = adminMapper.insertAdminItem(admin);
+    return i!=0;
+  }
+
+  @Override
+  public QueryVo deleteAdmin(AdminItem adminItem) {
+    QueryVo queryVo = new QueryVo();
+    int i = adminMapper.deleteByPrimaryKey(adminItem.getId());
+    if (i==0){
+      queryVo.setErrmsg("删除异常");
+      queryVo.setErrno(602);
+    }
+    queryVo.setErrno(0);
+    queryVo.setErrmsg("成功！");
+    return queryVo;
   }
 
   @Override
@@ -49,14 +57,49 @@ public class AdminServiceImpl implements AdminService {
   }
 
   @Override
+  public QueryVo updateAdmin(AdminItem adminItem) {
+    int i = adminMapper.updateAdmin(adminItem);
+    adminItem.setAddTime(new Date());
+    QueryVo queryVo = new QueryVo();
+    if(i==0){
+      queryVo.setErrmsg("更新失败");
+      queryVo.setErrno(0);
+      queryVo.setData(adminItem);
+    }
+    AdminItem adminItem1 = adminMapper.queryById(adminItem.getId());
+    queryVo.setErrmsg("成功");
+    queryVo.setErrno(0);
+    queryVo.setData(adminItem1);
+
+    return queryVo;
+  }
+
+  @Override
+  public QueryVo queryAdminPageByName(int page, int limit, String name) {
+
+    List<AdminItem> adminItem = adminMapper.queryByUsername(name);
+
+    AdminData adminData = new AdminData();
+
+    adminData.setTotal(adminItem.size());
+    adminData.setItems(adminItem);
+    QueryVo queryVo = new QueryVo();
+    queryVo.setErrmsg("成功");
+    queryVo.setErrno(0);
+    queryVo.setData(adminData);
+    PageHelper.startPage(page,limit);
+    return queryVo;
+  }
+
+  @Override
   public QueryVo queryAdminPage(int page, int limit) {
-      //获取链表
-      List<AdminItem> admins = adminMapper.queryList();
-
-      //分页
-      PageHelper.startPage(page,limit);
 
 
+    //获取链表
+    List<AdminItem> admins = adminMapper.queryList();
+
+    //分页
+    PageHelper.startPage(page,limit);
     //封装data对象
     AdminData adminData = new AdminData();
     adminData.setItems(admins);
@@ -67,6 +110,7 @@ public class AdminServiceImpl implements AdminService {
     queryVo.setErrmsg("成功");
     queryVo.setErrno(0);
     queryVo.setData(adminData);
+
 
     return queryVo;
   }

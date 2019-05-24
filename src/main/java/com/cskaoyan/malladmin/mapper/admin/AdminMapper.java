@@ -5,6 +5,7 @@ import com.cskaoyan.malladmin.bean.admin.AdminExample;
 import com.cskaoyan.malladmin.bean.admin.AdminItem;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.security.core.parameters.P;
 
 import java.util.List;
 
@@ -34,7 +35,15 @@ public interface AdminMapper {
 
     List<AdminItem> queryList();
 
+    int insertAdminItem(AdminItem adminItem);
+
+    List<AdminItem> queryByUsername(@Param("name")String name);
+
     Admin selectByUsername(String username);
+
+    int updateAdmin(@Param("adminItem") AdminItem adminItem);
+
+    AdminItem queryById(@Param("id") int id);
 
     Admin selectByUsernameAndPassword(@Param("username") String username,@Param("password") String password);
 }

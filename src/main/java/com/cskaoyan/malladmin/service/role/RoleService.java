@@ -9,4 +9,5 @@ import com.cskaoyan.malladmin.vo.QueryVo;
 public interface RoleService {
   public QueryVo queryRolePage(int page,int limit);
   QueryVo queryRoleOPtions();
+  QueryVo queryRolePageByName(int page,int limit,String name);
 }

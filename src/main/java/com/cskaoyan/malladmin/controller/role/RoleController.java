@@ -25,9 +25,15 @@ public class RoleController {
   RoleService roleService;
 
   @RequestMapping("role/list")
-  public JSONObject roleList(int page,int limit){
+  public JSONObject roleList(int page,int limit,String name){
     JsonConfig jsonConfig = new JsonConfig();
     jsonConfig.registerJsonValueProcessor(Date.class,new JsonDateValueProcessor());
+
+    if(name.length()!=0){
+      QueryVo queryVo = roleService.queryRolePageByName(page,limit,"%"+name+"%");
+      JSONObject jsonObject = JSONObject.fromObject(queryVo, jsonConfig);
+      return jsonObject;
+    }
 
     QueryVo queryVo = roleService.queryRolePage(page, limit);
 

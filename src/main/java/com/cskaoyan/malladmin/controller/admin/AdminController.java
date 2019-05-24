@@ -1,7 +1,7 @@
 package com.cskaoyan.malladmin.controller.admin;
 
 import com.cskaoyan.malladmin.bean.admin.Admin;
-import com.cskaoyan.malladmin.bean.admin.AdminData;
+import com.cskaoyan.malladmin.bean.admin.AdminItem;
 import com.cskaoyan.malladmin.service.admin.AdminService;
 import com.cskaoyan.malladmin.vo.QueryVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,13 +40,18 @@ public class AdminController {
     }
 
     @RequestMapping("admin/list")
-    public QueryVo adminList(int page, int limit){
+    public QueryVo adminList(int page, int limit,String username){
+      if(username!= null){
+        QueryVo queryVo = adminService.queryAdminPageByName(page, limit, "%"+username+"%");
+        return queryVo;
+      }
       QueryVo queryVo = adminService.queryAdminPage(page, limit);
+
       return queryVo;
     }
 
     @RequestMapping("admin/create")
-    public QueryVo createAdmin(@RequestBody Admin admin){
+    public QueryVo createAdmin(@RequestBody AdminItem admin){
 
       QueryVo queryVo = new QueryVo();
 
@@ -71,6 +76,8 @@ public class AdminController {
         queryVo.setErrmsg("管理员已存在！");
         return queryVo;
       }
+
+
       admin.setAddTime(new Date());
       admin.setUpdateTime(new Date());
       //插入返回
@@ -84,6 +91,18 @@ public class AdminController {
 
       queryVo.setErrmsg("插入异常！");
       queryVo.setErrno(602);
+      return queryVo;
+    }
+
+    @RequestMapping("admin/update")
+    public QueryVo updateAdmin(@RequestBody AdminItem admin){
+      QueryVo queryVo1 = adminService.updateAdmin(admin);
+      return queryVo1;
+    }
+
+    @RequestMapping("admin/delete")
+    public QueryVo deleteAdmin(@RequestBody AdminItem admin){
+      QueryVo queryVo = adminService.deleteAdmin(admin);
       return queryVo;
     }
 
