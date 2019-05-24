@@ -11,21 +11,18 @@ import java.util.List;
 public interface RegionMapper {
 
 
-  List<Region> queryProvince();
 
-  List<Region> queryCity(String code);
+    int queryProvinceCount();
 
-  List<Region> queryDistrict(String code);
+    List<Region> queryProvince();
 
-  String queryCityById(int id);
+    List<Region> queryCity(String code);
 
-  String queryProvinceById(int id);
+    List<Region> queryDistrict(String code);
 
-  String queryAreaById(int id);
+    String queryCityById(int id);
 
-  List<Region> getProvince();
+    String queryProvinceById(int id);
 
-  List<Region> getCity();
-
-  List<Region> getDistrict();
+    String queryAreaById(int id);
 }

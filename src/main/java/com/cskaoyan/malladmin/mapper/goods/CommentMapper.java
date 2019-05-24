@@ -3,6 +3,7 @@ package com.cskaoyan.malladmin.mapper.goods;
 import com.cskaoyan.malladmin.bean.goods.Comment;
 import com.cskaoyan.malladmin.bean.goods.CommentExample;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.security.core.parameters.P;
 
 import java.util.List;
 
@@ -28,4 +29,6 @@ public interface CommentMapper {
     int updateByPrimaryKeySelective(Comment record);
 
     int updateByPrimaryKey(Comment record);
+
+    int updateContentById(@Param("id") Integer id,@Param("content") String content);
 }

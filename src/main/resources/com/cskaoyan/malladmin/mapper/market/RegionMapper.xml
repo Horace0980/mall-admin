@@ -24,13 +24,4 @@
     <select id="queryAreaById" resultType="String">
         select `name` from cskaoyan_mall_region where `type` = 3 and code = #{id}
     </select>
-  <select id="getProvince" resultType="com.cskaoyan.malladmin.bean.market.Region">
-            select id,`name`,`type`,code from cskaoyan_mall_region where `type` = 1
-  </select>
-  <select id="getCity" resultType="com.cskaoyan.malladmin.bean.market.Region">
-            select id,`name`,`type`,code from cskaoyan_mall_region where `type` = 2
-  </select>
-  <select id="getDistrict" resultType="com.cskaoyan.malladmin.bean.market.Region">
-            select id,`name`,`type`,code from cskaoyan_mall_region where `type` = 3
-  </select>
 </mapper>

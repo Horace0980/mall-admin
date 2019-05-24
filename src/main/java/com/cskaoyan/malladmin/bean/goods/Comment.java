@@ -7,6 +7,8 @@ public class Comment {
 
     private Integer valueId;
 
+    private String commentId;
+
     private Byte type;
 
     private String content;
@@ -25,7 +27,15 @@ public class Comment {
 
     private Boolean deleted;
 
-    public Integer getId() {
+  public String getCommentId() {
+    return commentId;
+  }
+
+  public void setCommentId(String commentId) {
+    this.commentId = commentId;
+  }
+
+  public Integer getId() {
         return id;
     }
 

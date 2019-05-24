@@ -303,4 +303,8 @@
       deleted = #{deleted,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <update id="updateContentById" >
+    update cskaoyan_mall_comment set content = #{content} where id = #{id}
+  </update>
 </mapper>

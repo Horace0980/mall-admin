@@ -10,11 +10,11 @@ import java.util.List;
  * @Date: 2019/5/24 11:11
  */
 public interface OrderMapper {
-  int getOrderListCount(String userId, String orderSn, List<String> statusList);
+    int getOrderListCount(String userId, String orderSn, List<String> statusList);
 
-  List<Order> getOrderList(@Param("userId") String userId, @Param("orderSn") String orderSn, List<String> statusList);
+    List<Order> getOrderList(@Param("userId")String userId, @Param("orderSn") String orderSn, List<String> statusList);
 
-  Order getOrderDetail(int id);
+    Order getOrderDetail(int id);
 
   int getOrderTotal();
 }

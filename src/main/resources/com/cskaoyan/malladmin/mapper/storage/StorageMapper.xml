@@ -4,12 +4,6 @@
   <select id="queryList" resultMap="BaseResultMap">
     select * from cskaoyan_mall_storage
   </select>
-  
-  <insert id="insertStorage">
-    insert into cskaoyan_mall_storage (`key`,`name`,type,size,url,add_time,update_time,deleted)
-    values (#{key},#{name},#{type},#{size},#{url},#{addTime},#{updateTime},#{deleted})
-  </insert>
-  
   <resultMap id="BaseResultMap" type="com.cskaoyan.malladmin.bean.storage.Storage">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="key" jdbcType="VARCHAR" property="key" />
@@ -269,7 +263,7 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.cskaoyan.malladmin.bean.storage.Storage">
     update cskaoyan_mall_storage
-    set `key` = #{key,jdbcType=VARCHAR},
+    set key = #{key,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
       type = #{type,jdbcType=VARCHAR},
       size = #{size,jdbcType=INTEGER},

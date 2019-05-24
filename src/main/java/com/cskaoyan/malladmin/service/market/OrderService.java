@@ -1,5 +1,7 @@
 package com.cskaoyan.malladmin.service.market;
 
+import com.cskaoyan.malladmin.bean.goods.Comment;
+import com.cskaoyan.malladmin.bean.market.Order;
 import com.cskaoyan.malladmin.vo.QueryIn;
 import com.cskaoyan.malladmin.vo.QueryVo;
 
@@ -10,5 +12,7 @@ import com.cskaoyan.malladmin.vo.QueryVo;
 public interface OrderService {
     QueryVo getOrderList(QueryIn queryIn, String userId, String orderSn, String orderStatusArray);
 
-    QueryVo getOrderDetail(int parseInt);
+    Order getOrderDetail(int parseInt);
+
+    QueryVo reply(int id, String content);
 }

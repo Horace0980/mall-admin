@@ -28,5 +28,5 @@ public interface GoodsProductMapper {
 
     int updateByPrimaryKey(GoodsProduct record);
 
-    int getProductTotal();
+  int getProductTotal();
 }

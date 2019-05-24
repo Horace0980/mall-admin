@@ -9,7 +9,6 @@ import com.cskaoyan.malladmin.vo.QueryVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,31 +28,27 @@ public class RegionServiceImpl implements RegionService {
     @Override
     public QueryVo getRegionList() {
 
-        List<Region> provinces = regionMapper.getProvince();
-        List<Region> cities = regionMapper.getCity();
-        List<Region> districts = regionMapper.getDistrict();
+        List<Region> provinces = regionMapper.queryProvince();
+        for (int i = 0; i < provinces.size(); i++) {
+            Region province = provinces.get(i);
+            int code = province.getCode();
+            province.setCode(code*10000);
 
-       cities = getChildren(cities, districts);
+            List<Region> cities = regionMapper.queryCity(code+"%");
 
-       provinces = getChildren(provinces, cities);
-
-
-      return new QueryVo(0,provinces,"成功");
-    }
-
-  private List<Region> getChildren(List<Region> fathers, List<Region> childs) {
-    for (Region father : fathers) {
-      List<Region> children = new ArrayList<>();
-      String cCode = String.valueOf(father.getCode());
-      for (Region district : childs) {
-        String code = String.valueOf(district.getCode());
-        if (cCode.equals(code.substring(0, cCode.length()))) {
-          children.add(district);
+            for (int j = 0; j < cities.size(); j++) {
+                Region city = cities.get(j);
+                int code1 = city.getCode();
+                city.setCode(code1*100);
+                List<Region> districts = regionMapper.queryDistrict(code1+"%");
+                city.setChildren(districts);
+            }
+            province.setChildren(cities);
         }
-      }
-      father.setChildren(children);
-    }
 
-    return fathers;
-  }
+
+
+
+        return new QueryVo(0,provinces,"成功");
+    }
 }
