@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -22,11 +24,18 @@ public class OrderController {
     @RequestMapping("list")
     public QueryVo getOrderList(QueryIn queryIn, String userId, String orderSn,  String orderStatusArray){
 
-        System.out.printf(userId+"----"+orderSn+"----"+orderStatusArray);
 
-        String substring = orderStatusArray.substring(1, orderStatusArray.length() - 1);
-        System.out.printf("-----"+substring);
 
-        return null;
+
+       QueryVo getOrderList = orderService.getOrderList(queryIn,userId,orderSn,orderStatusArray);
+
+
+
+        return getOrderList;
+    }
+    @RequestMapping("detail")
+    public QueryVo getOrderDetail(String id){
+        QueryVo getOrderDetail = orderService.getOrderDetail(Integer.parseInt(id));
+        return getOrderDetail;
     }
 }

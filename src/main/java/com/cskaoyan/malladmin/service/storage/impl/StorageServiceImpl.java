@@ -1,5 +1,6 @@
 package com.cskaoyan.malladmin.service.storage.impl;
 
+import com.cskaoyan.malladmin.bean.Image;
 import com.cskaoyan.malladmin.bean.storage.Storage;
 import com.cskaoyan.malladmin.bean.storage.StroageData;
 import com.cskaoyan.malladmin.mapper.storage.StorageMapper;
@@ -23,10 +24,9 @@ public class StorageServiceImpl implements StorageService {
 
   @Override
   public QueryVo queryPage(int page,int limit) {
+    List<Storage> storages = storageMapper.queryList();
     PageHelper.startPage(page,limit);
     QueryVo queryVo = new QueryVo();
-
-    List<Storage> storages = storageMapper.queryList();
 
     StroageData stroageData = new StroageData();
     stroageData.setItems(storages);
@@ -36,5 +36,23 @@ public class StorageServiceImpl implements StorageService {
     queryVo.setErrmsg("成功");
     queryVo.setErrno(0);
     return queryVo;
+  }
+
+  @Override
+  public boolean insertStorage(Storage storage) {
+    int insert = storageMapper.insertStorage(storage);
+    return insert == 1;
+  }
+
+  @Override
+  public boolean updateStorage(Storage storage) {
+    int update = storageMapper.updateByPrimaryKey(storage);
+    return update == 1;
+  }
+
+  @Override
+  public boolean deleteStorage(Storage storage) {
+    int delete = storageMapper.updateByPrimaryKey(storage);
+    return delete == 1;
   }
 }

@@ -1,8 +1,11 @@
 package com.cskaoyan.malladmin.controller;
 
 import com.cskaoyan.malladmin.bean.Image;
+import com.cskaoyan.malladmin.bean.storage.Storage;
+import com.cskaoyan.malladmin.service.storage.StorageService;
 import com.cskaoyan.malladmin.utils.UploadUtils;
 import com.cskaoyan.malladmin.vo.QueryVo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +23,9 @@ import java.util.Date;
 @RequestMapping("storage")
 @RestController
 public class UploadController {
+
+    @Autowired
+    StorageService storageService;
 
     @RequestMapping("create")
     public QueryVo uploadPic(@RequestParam("file") MultipartFile file) {
@@ -40,14 +46,20 @@ public class UploadController {
             File newFile = new File(dirFile.getAbsoluteFile() + File.separator + name);
             file.transferTo(newFile);
 
-
-            Image image = new Image(1, key, name, (int) size, type, date, date, url);
-            queryVo.setData(image);
-            queryVo.setErrno(0);
-            queryVo.setErrmsg("success");
-
+            //Storage storage = new Storage();
+            Storage storage = new Storage(1, key, name, type, (int) size, url, date, date, false);
+            boolean flag = storageService.insertStorage(storage);
+            if (flag){
+                queryVo.setData(storage);
+                queryVo.setErrno(0);
+                queryVo.setErrmsg("success");
+            }else {
+                queryVo.setErrno(605);
+                queryVo.setErrmsg("error");
+            }
         } catch (IOException e) {
-            e.printStackTrace();
+            queryVo.setErrno(605);
+            queryVo.setErrmsg("error");
         }
 
         return queryVo;
