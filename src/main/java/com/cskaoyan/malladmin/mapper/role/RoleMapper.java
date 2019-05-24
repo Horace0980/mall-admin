@@ -12,4 +12,5 @@ public interface RoleMapper {
     Role selectByPrimaryKey(Integer id);
     List<Role> queryList();
     List<RoleOption> queryOptions();
+    List<Role> queryByName(@Param("name") String name);
 }

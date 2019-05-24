@@ -24,10 +24,11 @@ public class LogServiceImpl implements LogService {
   @Override
   public QueryVo queryPage(int page, int limit) {
 
+    List<Log> logs = logMapper.queryList();
     PageHelper.startPage(page,limit);
     QueryVo queryVo = new QueryVo();
     LogData logData = new LogData();
-    List<Log> logs = logMapper.queryList();
+
 
     logData.setItems(logs);
     logData.setTotal(logs.size());

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cskaoyan.malladmin.mapper.system.SystemMapper">
+
+    <resultMap id="BasicMap" type="com.cskaoyan.malladmin.bean.system.MallSystem">
+        <result column="key_name" property="keyName"/>
+        <result column="key_value" property="keyValue"/>
+        <result column="add_time" property="addTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+
+    <sql id="BasicSql">
+        id,key_name,key_value,add_time,update_time,deleted
+    </sql>
+
+    <select id="selectMallSystemByMall" resultMap="BasicMap">
+        select <include refid="BasicSql"/> from cskaoyan_mall_system
+        <where>
+            <if test="prefix != null">
+                and key_name like #{prefix}
+            </if>
+        </where>
+    </select>
+
+    <update id="updateMallSystemBykeyName">
+      update cskaoyan_mall_system
+      set key_value = #{keyValue},
+      update_time = #{updateTime}
+      where key_name = #{keyName}
+    </update>
+</mapper>

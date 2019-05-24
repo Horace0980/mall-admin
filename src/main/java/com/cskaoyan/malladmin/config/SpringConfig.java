@@ -4,6 +4,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
 /**
@@ -11,13 +13,10 @@ import org.springframework.stereotype.Component;
  * @Date: 2019/5/22 15:08
  */
 @Configuration
-@Component
-public class SpringConfig {
+public class SpringConfig implements WebMvcConfigurer {
 
-//    @Bean("bCryptEncoder")
-//    public BCryptPasswordEncoder bCryptPasswordEncoder(){
-//        return new BCryptPasswordEncoder();
-//    }
-
-
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/wx/storage/fetch/**").addResourceLocations("classpath:/static/");
+    }
 }

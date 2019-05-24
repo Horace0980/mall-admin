@@ -14,4 +14,8 @@ public interface BrandMapper {
     List<Brand> queryBrandList(String id, String name);
 
     int deleteBrand(Brand brand);
+
+    int createBrand(Brand brand);
+
+    int updateBrand(Brand brand);
 }

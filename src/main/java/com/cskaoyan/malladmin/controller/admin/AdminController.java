@@ -41,7 +41,7 @@ public class AdminController {
 
     @RequestMapping("admin/list")
     public QueryVo adminList(int page, int limit,String username){
-      if(username!=null){
+      if(username.length()!=0){
         QueryVo queryVo = adminService.queryAdminPageByName(page, limit, "%"+username+"%");
         return queryVo;
       }
@@ -98,6 +98,12 @@ public class AdminController {
     public QueryVo updateAdmin(@RequestBody AdminItem admin){
       QueryVo queryVo1 = adminService.updateAdmin(admin);
       return queryVo1;
+    }
+
+    @RequestMapping("admin/delete")
+    public QueryVo deleteAdmin(@RequestBody AdminItem admin){
+      QueryVo queryVo = adminService.deleteAdmin(admin);
+      return queryVo;
     }
 
 }

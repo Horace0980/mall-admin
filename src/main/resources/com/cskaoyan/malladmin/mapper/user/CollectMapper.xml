@@ -16,18 +16,22 @@
     <sql id="base_sql">
         id,user_id,value_id,type,deleted,add_time,update_time
     </sql>
+    <sql id="where_sql">
+        where 1=1
+        <if test="valueid!=null and valueid!= 0 ">
+            and value_id = #{valueid}
+        </if>
+        <if test="userid!=null and userid!= 0 ">
+            and user_id = #{userid}
+        </if>
+    </sql>
 
     <select id="selectAllCollect" resultMap="BaseResultMap">
       select
       <include refid="base_sql"/>
-      from cskaoyan_mall_collect where 1=1
-        <if test="valueid!=null and valueid!='' ">
-            and value_id = #{valueid}
-        </if>
-        <if test="userid!=null and userid!='' ">
-            and user_id = #{userid}
-        </if>
-      order by #{sort} #{order} limit #{start},#{rows}
+      from cskaoyan_mall_collect
+      <include refid="where_sql"/>
+      order by #{sort} #{order}
     </select>
 
     <select id="selectAll" resultMap="BaseResultMap">
@@ -38,6 +42,7 @@
 
     <select id="queryCollectCount" resultType="int">
         select count(id) from  cskaoyan_mall_collect
+        <include refid="where_sql"/>
     </select>
 
 

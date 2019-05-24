@@ -25,4 +25,6 @@ public interface AdminService {
 
     QueryVo updateAdmin(AdminItem adminItem);
 
+    QueryVo deleteAdmin(AdminItem adminItem);
+
 }

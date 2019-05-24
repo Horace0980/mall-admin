@@ -38,6 +38,19 @@ public class AdminServiceImpl implements AdminService {
   }
 
   @Override
+  public QueryVo deleteAdmin(AdminItem adminItem) {
+    QueryVo queryVo = new QueryVo();
+    int i = adminMapper.deleteByPrimaryKey(adminItem.getId());
+    if (i==0){
+      queryVo.setErrmsg("删除异常");
+      queryVo.setErrno(602);
+    }
+    queryVo.setErrno(0);
+    queryVo.setErrmsg("成功！");
+    return queryVo;
+  }
+
+  @Override
   public boolean QueryAdminName(String name) {
     Admin admin = adminMapper.selectByUsername(name);
     return admin!=null;

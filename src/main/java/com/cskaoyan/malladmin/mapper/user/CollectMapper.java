@@ -11,9 +11,9 @@ import java.util.List;
  */
 public interface CollectMapper {
 
-    int queryCollectCount();
+    int queryCollectCount(@Param("valueid")int vi, @Param("userid") int ui);
 
-    List<Collect> selectAllCollect(@Param("sort") String sort, @Param("order") String o, @Param("start") int s, @Param("rows") int l, @Param("valueid")int vi, @Param("userid") int ui);
+    List<Collect> selectAllCollect(@Param("sort") String sort, @Param("order") String o, @Param("valueid")int vi, @Param("userid") int ui);
 
     //查询所有的user
     List<Collect> selectAll();

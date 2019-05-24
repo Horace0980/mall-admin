@@ -7,6 +7,10 @@
   <select id="queryOptions" resultType="com.cskaoyan.malladmin.bean.role.RoleOption">
     select id as value,name as label from  cskaoyan_mall_role
   </select>
+
+  <select id="queryByName" resultMap="BaseResultMap">
+    select * from cskaoyan_mall_role where name like #{name};
+  </select>
   <resultMap id="BaseResultMap" type="com.cskaoyan.malladmin.bean.role.Role">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />

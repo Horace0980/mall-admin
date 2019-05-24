@@ -19,7 +19,7 @@ public class AddressController {
     AddressService addressService;
 
     @RequestMapping("/list")
-    public QueryVo selectAllAddress(QueryIn queryIn,String name,int userId){
+    public QueryVo selectAllAddress(QueryIn queryIn,String name,String userId){
         PageHandler pageHandler=null;
         pageHandler= addressService.selectAllAddress(queryIn,name,userId);
 

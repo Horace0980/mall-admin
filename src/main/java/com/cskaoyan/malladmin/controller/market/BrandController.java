@@ -47,13 +47,17 @@ public class BrandController {
     }
 
     @RequestMapping("create")
-    public QueryVo createBrand(@RequestBody Brand brand) throws UnknownHostException {
+    public QueryVo createBrand(@RequestBody Brand brand) {
         QueryVo queryVo = new QueryVo();
 
-
-
-
+        queryVo = brandService.createBrand(brand);
         return queryVo;
+    }
+    @RequestMapping("update")
+    public QueryVo updateBrand(@RequestBody Brand brand){
+
+        QueryVo updateBrand = brandService.updateBrand(brand);
+        return updateBrand;
     }
 
 }
