@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cskaoyan.malladmin.mapper.WxCatalog.WxCatalogMapper">
+    <select id="queryCategoryList" resultMap="BaseResultMap">
+        select * from cskaoyan_mall_category where pid=#{pid}
+    </select>
+    <select id="queryCurrentCategory" resultMap="BaseResultMap">
+        select * from cskaoyan_mall_category where id=#{id}
+    </select>
+    <select id="querySubCategory" resultMap="BaseResultMap">
+        select * from cskaoyan_mall_category where pid=#{pid}
+    </select>
+
+    <resultMap id="BaseResultMap" type="com.cskaoyan.malladmin.bean.wxCategory.WxCategory">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="keywords" jdbcType="VARCHAR" property="keywords" />
+        <result column="desc" jdbcType="VARCHAR" property="desc" />
+        <result column="pid" jdbcType="INTEGER" property="pid" />
+        <result column="icon_url" jdbcType="VARCHAR" property="iconUrl" />
+        <result column="pic_url" jdbcType="VARCHAR" property="picUrl" />
+        <result column="level" jdbcType="VARCHAR" property="level" />
+        <result column="sort_order" jdbcType="TINYINT" property="sortOrder" />
+        <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+        <result column="deleted" jdbcType="BIT" property="deleted" />
+    </resultMap>
+</mapper>
