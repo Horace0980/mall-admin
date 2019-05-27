@@ -8,4 +8,6 @@ import com.cskaoyan.malladmin.vo.QueryVo;
  */
 public interface WxCatalogService {
     QueryVo queryIndex();
+
+    QueryVo current(int id);
 }

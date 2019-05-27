@@ -2,13 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cskaoyan.malladmin.mapper.WxCatalog.WxCatalogMapper">
     <select id="queryCategoryList" resultMap="BaseResultMap">
-        select * from cskaoyan_mall_category where pid=0;
+        select * from cskaoyan_mall_category where pid=#{pid}
     </select>
     <select id="queryCurrentCategory" resultMap="BaseResultMap">
-        select * from cskaoyan_mall_category where id=1005000
+        select * from cskaoyan_mall_category where id=#{id}
     </select>
     <select id="querySubCategory" resultMap="BaseResultMap">
-        select * from cskaoyan_mall_category where pid=1005000
+        select * from cskaoyan_mall_category where pid=#{pid}
     </select>
 
     <resultMap id="BaseResultMap" type="com.cskaoyan.malladmin.bean.wxCategory.WxCategory">
