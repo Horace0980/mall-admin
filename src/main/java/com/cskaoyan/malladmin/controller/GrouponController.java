@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Date: 2019/5/23 17:28
  */
 @RestController
-@RequestMapping("groupon")
+@RequestMapping("admin/groupon")
 public class GrouponController {
 
     @Autowired

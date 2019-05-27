@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Date: 2019/5/23 17:53
  */
 @RestController
+@RequestMapping("admin")
 public class LogController {
   @Autowired
   LogService logService;

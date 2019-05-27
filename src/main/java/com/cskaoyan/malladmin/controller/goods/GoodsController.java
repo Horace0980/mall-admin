@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @Date : 2019/5/22 下午 11:12
  */
 @Controller
-@RequestMapping("/goods")
+@RequestMapping("admin/goods")
 public class GoodsController {
     @Autowired
     GoodsService goodsService;

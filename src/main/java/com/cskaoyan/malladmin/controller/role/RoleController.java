@@ -19,6 +19,7 @@ import java.util.Date;
  * @Date: 2019/5/22 21:48
  */
 @RestController
+@RequestMapping("admin")
 public class RoleController {
 
   @Autowired

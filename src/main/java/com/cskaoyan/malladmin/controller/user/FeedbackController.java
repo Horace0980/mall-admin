@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Date: 2019/5/22 21:12
  */
 @RestController
-@RequestMapping("/feedback")
+@RequestMapping("admin/feedback")
 public class FeedbackController {
     @Autowired
     FeedbackService feedbackService;

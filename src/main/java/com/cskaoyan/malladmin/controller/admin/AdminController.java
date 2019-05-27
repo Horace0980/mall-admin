@@ -19,6 +19,7 @@ import java.util.regex.Pattern;
  * @Date: 2019/5/22 13:18
  */
 @RestController
+@RequestMapping("admin")
 public class AdminController {
     @Autowired
     AdminService adminService;

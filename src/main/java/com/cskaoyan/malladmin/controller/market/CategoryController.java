@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Date: 2019/5/23 22:24
  */
 @RestController
-@RequestMapping("category")
+@RequestMapping("admin/category")
 public class CategoryController {
 
     @Autowired

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Date: 2019/5/22 21:12
  */
 @RestController
-@RequestMapping("/footprint")
+@RequestMapping("admin/footprint")
 public class FootprintController {
     @Autowired
     FootprintService footprintService;

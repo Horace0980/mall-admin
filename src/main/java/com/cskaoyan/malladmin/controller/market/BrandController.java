@@ -25,7 +25,7 @@ import java.util.Date;
  * @Date: 2019/5/23 16:53
  */
 
-@RequestMapping("brand")
+@RequestMapping("admin/brand")
 @RestController
 public class BrandController {
 

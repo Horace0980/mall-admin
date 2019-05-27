@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Date: 2019/5/23 15:16
  */
 @RestController
-@RequestMapping("topic")
+@RequestMapping("admin/topic")
 public class TopicController {
 
     @Autowired

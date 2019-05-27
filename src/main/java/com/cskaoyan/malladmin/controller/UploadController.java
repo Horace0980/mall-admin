@@ -17,7 +17,7 @@ import java.util.Date;
  * @Author: Qiu
  * @Date: 2019/5/23 21:22
  */
-@RequestMapping("storage")
+@RequestMapping("admin/storage")
 @RestController
 public class UploadController {
 

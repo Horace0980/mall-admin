@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@RequestMapping("issue")
+@RequestMapping("admin/issue")
 public class IssueController {
 
 
