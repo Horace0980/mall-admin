@@ -1,4 +1,4 @@
-package com.cskaoyan.malladmin.controller;
+package com.cskaoyan.malladmin.controller.utils;
 
 import com.cskaoyan.malladmin.bean.ad.Ad;
 import com.cskaoyan.malladmin.mapper.admin.AdminMapper;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Date: 2019/5/22 19:46
  */
 @RestController
-@RequestMapping("ad")
+@RequestMapping("admin/ad")
 public class AdController {
     @Autowired
     private AdService adService;

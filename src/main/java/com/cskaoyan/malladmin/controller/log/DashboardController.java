@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Date: 2019/5/24 16:15
  */
 @RestController
+@RequestMapping("admin")
 public class DashboardController {
   @Autowired
   DashboardService dashboardService;

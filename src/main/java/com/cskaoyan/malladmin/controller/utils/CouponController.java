@@ -1,4 +1,4 @@
-package com.cskaoyan.malladmin.controller;
+package com.cskaoyan.malladmin.controller.utils;
 
 import com.cskaoyan.malladmin.bean.coupon.Coupon;
 import com.cskaoyan.malladmin.service.coupon.CouponService;
@@ -19,7 +19,7 @@ import java.util.Map;
  * @Date: 2019/5/22 21:17
  */
 @RestController
-@RequestMapping("coupon")
+@RequestMapping("admin/coupon")
 public class CouponController {
     @Autowired
     private CouponService couponService;

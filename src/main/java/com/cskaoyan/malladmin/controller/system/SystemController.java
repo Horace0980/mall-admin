@@ -13,7 +13,7 @@ import java.util.*;
  */
 
 @RestController
-@RequestMapping("config")
+@RequestMapping("admin/config")
 public class SystemController {
 
     @Autowired

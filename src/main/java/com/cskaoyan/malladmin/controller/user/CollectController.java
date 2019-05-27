@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Date: 2019/5/22 21:12
  */
 @RestController
-@RequestMapping("/collect")
+@RequestMapping("admin/collect")
 public class CollectController {
     @Autowired
     CollectService collectService;

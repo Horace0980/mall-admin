@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @Date : 2019/5/23 上午 09:29
  */
 @Controller
-@RequestMapping("/comment")
+@RequestMapping("admin/comment")
 public class CommentController {
     @Autowired
     CommentService commentService;

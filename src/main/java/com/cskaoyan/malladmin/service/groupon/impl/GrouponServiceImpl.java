@@ -36,7 +36,7 @@ public class GrouponServiceImpl implements GrouponService {
     public QueryVo getInCondition(QueryIn queryIn, String goodsId) {
         GrouponRulesExample grouponRulesExample = new GrouponRulesExample();
         grouponRulesExample.setOrderByClause(queryIn.getSort()+" "+queryIn.getOrder());
-        GrouponRulesExample.Criteria or = grouponRulesExample.or();
+        GrouponRulesExample.Criteria or = grouponRulesExample.or().andDeletedEqualTo(false);
         if (goodsId!=null && goodsId.trim().length()>0){
             try {
                 or.andGoodsIdEqualTo(Integer.parseInt(goodsId));
@@ -99,7 +99,7 @@ public class GrouponServiceImpl implements GrouponService {
     public QueryVo getGrouponInCondition(QueryIn queryIn, String goodsId) {
         GrouponExample grouponExample = new GrouponExample();
         grouponExample.setOrderByClause(queryIn.getSort()+" "+queryIn.getOrder());
-        GrouponExample.Criteria or = grouponExample.or();
+        GrouponExample.Criteria or = grouponExample.or().andDeletedEqualTo(false);
         if (goodsId!=null && goodsId.trim().length()>0){
 //            try {
                 or.andGrouponIdEqualTo(Integer.parseInt(goodsId.trim()));

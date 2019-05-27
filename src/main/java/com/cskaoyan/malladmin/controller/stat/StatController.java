@@ -15,7 +15,7 @@ import java.util.Map;
  */
 
 @RestController
-@RequestMapping("stat")
+@RequestMapping("admin/stat")
 public class StatController {
 
     @Autowired

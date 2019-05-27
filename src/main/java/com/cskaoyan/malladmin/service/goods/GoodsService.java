@@ -22,4 +22,6 @@ public interface GoodsService {
     QueryVo inserts(BigData bigData);
 
     QueryVo updates(UpdateData updateData);
+
+    QueryVo indexCount();
 }

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Date: 2019/5/22 23:43
  */
 
-@RequestMapping("region")
+@RequestMapping("admin/region")
 @RestController
 public class RegionController {
 
