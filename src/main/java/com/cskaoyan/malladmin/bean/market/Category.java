@@ -1,5 +1,7 @@
 package com.cskaoyan.malladmin.bean.market;
 
+import com.cskaoyan.malladmin.bean.goods.Goods;
+
 import java.util.Date;
 import java.util.List;
 
@@ -23,6 +25,7 @@ public class Category {
     Date addTime;
     Date updateTime;
     List<Category> children;
+    List<Goods> goodsList;
 
     public Category() {
     }
@@ -41,18 +44,11 @@ public class Category {
                 ", addTime=" + addTime +
                 ", updateTime=" + updateTime +
                 ", children=" + children +
+                ", goodsList=" + goodsList +
                 '}';
     }
 
-    public int getPid() {
-        return pid;
-    }
-
-    public void setPid(int pid) {
-        this.pid = pid;
-    }
-
-    public Category(String desc, String iconUrl, int id, String keywords, String level, String name, String picUrl, int pid, Date addTime, Date updateTime, List<Category> children) {
+    public Category(String desc, String iconUrl, int id, String keywords, String level, String name, String picUrl, int pid, Date addTime, Date updateTime, List<Category> children, List<Goods> goodsList) {
         this.desc = desc;
         this.iconUrl = iconUrl;
         this.id = id;
@@ -64,7 +60,25 @@ public class Category {
         this.addTime = addTime;
         this.updateTime = updateTime;
         this.children = children;
+        this.goodsList = goodsList;
     }
+
+    public List<Goods> getGoodsList() {
+        return goodsList;
+    }
+
+    public void setGoodsList(List<Goods> goodsList) {
+        this.goodsList = goodsList;
+    }
+
+    public int getPid() {
+        return pid;
+    }
+
+    public void setPid(int pid) {
+        this.pid = pid;
+    }
+
 
     public Date getAddTime() {
         return addTime;

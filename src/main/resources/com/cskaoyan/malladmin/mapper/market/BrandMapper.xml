@@ -31,4 +31,8 @@
         update cskaoyan_mall_brand set `name` = #{name},`desc` = #{desc},update_time =#{updateTime},floor_price =#{floorPrice},pic_url=#{picUrl}
         where id=#{id}
     </update>
+    <select id="getBrandList" resultType="com.cskaoyan.malladmin.bean.market.Brand">
+         select id,`name`,`desc`,pic_url as picUrl,sort_order as sortOrder,floor_price as floorPrice,add_time as addTime,
+         update_time as updateTime,deleted from cskaoyan_mall_brand where deleted = false
+    </select>
 </mapper>
