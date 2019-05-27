@@ -1,4 +1,4 @@
-package com.cskaoyan.malladmin.controller;
+package com.cskaoyan.malladmin.controller.utils;
 
 import com.cskaoyan.malladmin.bean.Image;
 import com.cskaoyan.malladmin.utils.UploadUtils;

@@ -1,4 +1,4 @@
-package com.cskaoyan.malladmin.controller;
+package com.cskaoyan.malladmin.controller.utils;
 
 import com.cskaoyan.malladmin.bean.ad.Ad;
 import com.cskaoyan.malladmin.mapper.admin.AdminMapper;
