@@ -18,4 +18,6 @@ public interface BrandMapper {
     int createBrand(Brand brand);
 
     int updateBrand(Brand brand);
+
+    List<Brand> getBrandList();
 }
