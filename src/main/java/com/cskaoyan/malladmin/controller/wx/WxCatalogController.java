@@ -1,4 +1,4 @@
-package com.cskaoyan.malladmin.controller.WxCatalog;
+package com.cskaoyan.malladmin.controller.wx;
 
 import com.cskaoyan.malladmin.service.WxCatalog.WxCatalogService;
 import com.cskaoyan.malladmin.vo.QueryVo;
