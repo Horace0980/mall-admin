@@ -12,4 +12,6 @@ public interface CommentService {
     QueryVo allList(QueryIn queryIn, Integer userId, Integer valueId);
 
     QueryVo deleteById(Comment comment);
+
+    QueryVo list(String valueId, String type, String showType, String page, String size);
 }

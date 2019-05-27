@@ -15,20 +15,22 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @Date : 2019/5/23 上午 09:29
  */
 @Controller
-@RequestMapping("admin/comment")
+
 public class CommentController {
     @Autowired
     CommentService commentService;
 
-    @RequestMapping("/list")
+    @RequestMapping("admin/comment/list")
     @ResponseBody
     public QueryVo goodslist(QueryIn queryIn, Integer userId, Integer valueId){
         return commentService.allList(queryIn,userId,valueId);
     }
 
-    @RequestMapping("/delete")
+    @RequestMapping("admin/comment/delete")
     @ResponseBody
-    public QueryVo goodslist(@RequestBody Comment comment){
+    public QueryVo goodlist(@RequestBody Comment comment){
         return commentService.deleteById(comment);
     }
+
+
 }

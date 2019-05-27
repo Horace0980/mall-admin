@@ -46,4 +46,20 @@ public class CommentServiceImpl implements CommentService {
         int i = commentMapper.deleteByPrimaryKey(comment.getId());
         return new QueryVo(0,"","成功");
     }
+
+    @Override
+    public QueryVo list(String valueId, String type, String showType, String page, String size) {
+        CommentExample commentExample = new CommentExample();
+        CommentExample.Criteria criteria = commentExample.createCriteria();
+        criteria.andValueIdEqualTo(Integer.valueOf(valueId));
+        criteria.andTypeEqualTo(Byte.valueOf(type));
+        HashMap<Object, Object> map = new HashMap<>();
+        List<Comment> comment = commentMapper.selectByExample(commentExample);
+        PageHelper.startPage(Integer.parseInt(page),Integer.parseInt(size));
+        List<Comment> comments = commentMapper.selectByExample(commentExample);
+
+        map.put("commentCount",comment.size());
+        map.put("commentList",comments);
+        return new QueryVo(0,map,"success");
+    }
 }
