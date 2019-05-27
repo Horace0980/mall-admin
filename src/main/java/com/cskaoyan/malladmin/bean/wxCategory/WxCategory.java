@@ -18,12 +18,12 @@ public class WxCategory {
     String keywords;
     String desc;
     int pid;
-    String icon_url;
-    String pic_url;
+    String iconUrl;
+    String picUrl;
     String level;
-    int sort_order;
-    Date add_time;
-    Date update_time;
+    int sortOrder;
+    Date addTime;
+    Date updateTime;
     int deleted;
 
     @Override
@@ -34,12 +34,12 @@ public class WxCategory {
                 ", keywords='" + keywords + '\'' +
                 ", desc='" + desc + '\'' +
                 ", pid=" + pid +
-                ", icon_url='" + icon_url + '\'' +
-                ", pic_url='" + pic_url + '\'' +
+                ", iconUrl='" + iconUrl + '\'' +
+                ", picUrl='" + picUrl + '\'' +
                 ", level='" + level + '\'' +
-                ", sort_order=" + sort_order +
-                ", add_time=" + add_time +
-                ", update_time=" + update_time +
+                ", sortOrder=" + sortOrder +
+                ", addTime=" + addTime +
+                ", updateTime=" + updateTime +
                 ", deleted=" + deleted +
                 '}';
     }
@@ -84,20 +84,20 @@ public class WxCategory {
         this.pid = pid;
     }
 
-    public String getIcon_url() {
-        return icon_url;
+    public String getIconUrl() {
+        return iconUrl;
     }
 
-    public void setIcon_url(String icon_url) {
-        this.icon_url = icon_url;
+    public void setIconUrl(String iconUrl) {
+        this.iconUrl = iconUrl;
     }
 
-    public String getPic_url() {
-        return pic_url;
+    public String getPicUrl() {
+        return picUrl;
     }
 
-    public void setPic_url(String pic_url) {
-        this.pic_url = pic_url;
+    public void setPicUrl(String picUrl) {
+        this.picUrl = picUrl;
     }
 
     public String getLevel() {
@@ -108,28 +108,28 @@ public class WxCategory {
         this.level = level;
     }
 
-    public int getSort_order() {
-        return sort_order;
+    public int getSortOrder() {
+        return sortOrder;
     }
 
-    public void setSort_order(int sort_order) {
-        this.sort_order = sort_order;
+    public void setSortOrder(int sortOrder) {
+        this.sortOrder = sortOrder;
     }
 
-    public Date getAdd_time() {
-        return add_time;
+    public Date getAddTime() {
+        return addTime;
     }
 
-    public void setAdd_time(Date add_time) {
-        this.add_time = add_time;
+    public void setAddTime(Date addTime) {
+        this.addTime = addTime;
     }
 
-    public Date getUpdate_time() {
-        return update_time;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setUpdate_time(Date update_time) {
-        this.update_time = update_time;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 
     public int getDeleted() {
@@ -137,21 +137,6 @@ public class WxCategory {
     }
 
     public void setDeleted(int deleted) {
-        this.deleted = deleted;
-    }
-
-    public WxCategory(int id, String name, String keywords, String desc, int pid, String icon_url, String pic_url, String level, int sort_order, Date add_time, Date update_time, int deleted) {
-        this.id = id;
-        this.name = name;
-        this.keywords = keywords;
-        this.desc = desc;
-        this.pid = pid;
-        this.icon_url = icon_url;
-        this.pic_url = pic_url;
-        this.level = level;
-        this.sort_order = sort_order;
-        this.add_time = add_time;
-        this.update_time = update_time;
         this.deleted = deleted;
     }
 }
