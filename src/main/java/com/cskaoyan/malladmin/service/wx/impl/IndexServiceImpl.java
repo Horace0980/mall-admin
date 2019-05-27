@@ -1,14 +1,31 @@
 package com.cskaoyan.malladmin.service.wx.impl;
 
+import com.cskaoyan.malladmin.bean.ad.Ad;
+import com.cskaoyan.malladmin.bean.ad.AdExample;
+import com.cskaoyan.malladmin.bean.coupon.Coupon;
+import com.cskaoyan.malladmin.bean.coupon.CouponExample;
+import com.cskaoyan.malladmin.bean.goods.Goods;
+import com.cskaoyan.malladmin.bean.goods.GoodsExample;
+import com.cskaoyan.malladmin.bean.groupon.Groupon;
+import com.cskaoyan.malladmin.bean.groupon.GrouponExample;
+import com.cskaoyan.malladmin.bean.groupon.GrouponWx;
 import com.cskaoyan.malladmin.bean.goods.Goods;
 import com.cskaoyan.malladmin.bean.goods.GoodsExample;
 import com.cskaoyan.malladmin.bean.market.Brand;
 import com.cskaoyan.malladmin.bean.market.Category;
+import com.cskaoyan.malladmin.bean.topic.Topic;
+import com.cskaoyan.malladmin.bean.topic.TopicExample;
+import com.cskaoyan.malladmin.mapper.ad.AdMapper;
+import com.cskaoyan.malladmin.mapper.coupon.CouponMapper;
+import com.cskaoyan.malladmin.mapper.goods.GoodsMapper;
+import com.cskaoyan.malladmin.mapper.groupon.GrouponMapper;
 import com.cskaoyan.malladmin.mapper.goods.GoodsMapper;
 import com.cskaoyan.malladmin.mapper.market.BrandMapper;
 import com.cskaoyan.malladmin.mapper.market.CategoryMapper;
+import com.cskaoyan.malladmin.mapper.topic.TopicMapper;
 import com.cskaoyan.malladmin.service.wx.IndexService;
 import com.cskaoyan.malladmin.vo.QueryVo;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +46,15 @@ public class IndexServiceImpl implements IndexService {
     @Autowired
     CategoryMapper categoryMapper;
     @Autowired
+    AdMapper adMapper;
+    @Autowired
+    CouponMapper couponMapper;
+    @Autowired
+    GrouponMapper grouponMapper;
+    @Autowired
     GoodsMapper goodsMapper;
+    @Autowired
+    TopicMapper topicMapper;
 
 
 
@@ -37,22 +62,85 @@ public class IndexServiceImpl implements IndexService {
     public QueryVo wxHome() {
         HashMap<Object, Object> map = new HashMap<>();
 
+        //brandList
         List<Brand> brandList = getBrands();
-
         map.put("brandList",brandList);
-
+        //channel
         List<Category>  channel= categoryMapper.getList(0);
-
         map.put("channel",channel);
-
+        //floorGoodsList
         List<Category> floorGoodsList = getCategories(channel);
-
-
         map.put("floorGoodsList",floorGoodsList);
 
+        //banner
+        List<Ad> banner = getBanner();
+        map.put("banner",banner);
 
+        //couponList
+        List<Coupon> couponList = getCouponList();
+        map.put("couponList",couponList);
+
+        //grouponList
+        List<GrouponWx> grouponList = getGrouponWxes();
+        map.put("grouponList",grouponList);
+
+        //newGoodsList
+        List<Goods> newGoodsList = goodsMapper.selectNewGoodsList();
+        map.put("newGoodsList",newGoodsList);
+
+        //topicList
+        List<Topic> topicList = getTopics();
+        map.put("topicList",topicList);
+        //hotGoodsList
+
+        List<Goods> hotGoodsList = getHotGoodsList();
+
+
+        map.put("hotGoodsList",hotGoodsList);
 
         return new QueryVo(0,map,"success");
+    }
+
+    private List<Goods> getHotGoodsList() {
+        GoodsExample goodsExample = new GoodsExample();
+        GoodsExample.Criteria criteria = goodsExample.createCriteria();
+        List<Short> list = new ArrayList<>();
+        for (int i = 35; i < 40; i++) {
+            list.add((short) i);
+        }
+        criteria.andSortOrderIn(list);
+        return goodsMapper.selectByExample(goodsExample);
+    }
+
+    private List<Topic> getTopics() {
+        TopicExample topicExample = new TopicExample();
+        PageHelper.startPage(0,4);
+        return topicMapper.selectByExample(topicExample);
+    }
+
+    private List<GrouponWx> getGrouponWxes() {
+        GoodsExample goodsExample = new GoodsExample();
+        GoodsExample.Criteria criteria = goodsExample.createCriteria();
+        criteria.andIdBetween(1006002,1006007);
+        List<Goods> goods = goodsMapper.selectByExample(goodsExample);
+        GrouponWx grouponWx1 = new GrouponWx(goods.get(0), 231, 899.00);
+        GrouponWx grouponWx2 = new GrouponWx(goods.get(1), 244, 450.00);
+        List<GrouponWx> grouponList = new ArrayList<>();
+        grouponList.add(grouponWx1);
+        grouponList.add(grouponWx2);
+        return grouponList;
+    }
+
+    private List<Coupon> getCouponList() {
+        CouponExample couponExample = new CouponExample();
+        PageHelper.startPage(0,4);
+        return couponMapper.selectByExample(couponExample);
+    }
+
+    private List<Ad> getBanner() {
+        AdExample adExample = new AdExample();
+        PageHelper.startPage(0,4);
+        return adMapper.selectByExample(adExample);
     }
 
     private List<Category> getCategories(List<Category> channel) {

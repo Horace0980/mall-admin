@@ -35,4 +35,6 @@ public interface GoodsMapper {
     int updateByPrimaryKey(Goods record);
 
   int getGoodsTotal();
+
+  List<Goods> selectNewGoodsList();
 }
