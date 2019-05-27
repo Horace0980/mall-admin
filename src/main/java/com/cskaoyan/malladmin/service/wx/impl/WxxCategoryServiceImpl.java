@@ -29,14 +29,22 @@ public class WxxCategoryServiceImpl implements WxxCategoryService {
     @Override
     public QueryVo getById(String id) {
         HashMap<String,Object> map = new HashMap<>();
-        Category category = categoryMapper.selectById(Integer.parseInt(id));
-        Category parent = categoryMapper.selectById(category.getPid());
-        List<Category> categories = categoryMapper.getList(category.getPid());
+        Category current = categoryMapper.selectById(Integer.parseInt(id));
+        if (current.getPid()==0){
+            //是一级目录
+            List<Category> categories = categoryMapper.getList(Integer.parseInt(id));
+            map.put("brotherCategory",categories);
+            map.put("currentCategory",categories.get(0));
+            map.put("parentCategory",current);
+            return new QueryVo(0,map,"成功");
+        }
+        //是二级目录
+        Category parent = categoryMapper.selectById(current.getPid());
+        List<Category> categories = categoryMapper.getList(current.getPid());
         map.put("brotherCategory",categories);
-        map.put("currentCategory",category);
+        map.put("currentCategory",current);
         map.put("parentCategory",parent);
         return new QueryVo(0,map,"成功");
-
     }
 
     /**
