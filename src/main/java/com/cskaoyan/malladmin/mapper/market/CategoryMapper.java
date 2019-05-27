@@ -3,6 +3,7 @@ package com.cskaoyan.malladmin.mapper.market;
 import com.cskaoyan.malladmin.bean.market.Category;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * @Author: Qiu
@@ -19,4 +20,6 @@ public interface CategoryMapper {
     int updateCategory(Category category);
 
     Category selectById(int id);
+
+    List<Category> selectByIdIn(Set<Integer> category_ids);
 }

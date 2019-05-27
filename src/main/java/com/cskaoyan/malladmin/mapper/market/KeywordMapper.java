@@ -18,4 +18,12 @@ public interface KeywordMapper {
     int updateKeyword(Keywords keywords);
 
     int createKeyword(Keywords keywords);
+
+    List<Keywords>  getDefault();
+
+    List<Keywords> getHot();
+
+    List<Keywords> getRandomKeyword(int counts);
+
+    List<String> getKeywordLikeList(String keyword);
 }

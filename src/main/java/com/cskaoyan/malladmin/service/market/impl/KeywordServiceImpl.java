@@ -9,6 +9,7 @@ import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -127,5 +128,46 @@ public class KeywordServiceImpl implements KeywordService {
 
         return queryVo;
 
+    }
+
+    /**
+     * 返回defaultKeyword historyKeywordList hotKeywordList
+     * @return
+     * @param historyKeywordList
+     */
+    @Override
+    public QueryVo getDefaultAndHotKeywords(List<Keywords> historyKeywordList) {
+        List<Keywords> keywords = keywordMapper.getDefault();
+        List<Keywords> keywords_hot = keywordMapper.getHot();
+        //判断size
+        if (historyKeywordList==null || historyKeywordList.size()==0){
+            historyKeywordList = new ArrayList<>();
+        }
+        if (keywords.size()==0){
+            //随机返回
+            keywords = keywordMapper.getRandomKeyword(1);
+        }
+        if (keywords_hot.size()==0){
+            keywords_hot=keywordMapper.getRandomKeyword(3);
+        }
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("defaultKeyword",keywords.get(0));
+        map.put("historyKeywordList",historyKeywordList);
+        map.put("hotKeywordList",keywords_hot);
+
+        return new QueryVo(0,map,"成功");
+
+
+    }
+
+    /**
+     * 返回相似于keyword的一个keywordlist，只含有keyword
+     * @param keyword
+     * @return
+     */
+    @Override
+    public QueryVo getKeywordLikeList(String keyword) {
+        List<String> keywords = keywordMapper.getKeywordLikeList("%"+keyword+"%");
+        return new QueryVo(0,keywords,"成功");
     }
 }

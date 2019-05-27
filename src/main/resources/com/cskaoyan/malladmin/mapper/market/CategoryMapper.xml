@@ -20,4 +20,10 @@
     <select id="selectById" resultType="com.cskaoyan.malladmin.bean.market.Category">
         select id, `name`,pic_url as picUrl,icon_url as iconUrl,`level`, keywords,`desc`,pid from cskaoyan_mall_category where id = #{id} and deleted = false
     </select>
+    <select id="selectByIdIn" resultType="com.cskaoyan.malladmin.bean.market.Category">
+        select id, `name`,pic_url as picUrl,icon_url as iconUrl,`level`, keywords,`desc`,pid from cskaoyan_mall_category where  deleted = false and id in
+        <foreach collection="collection" open="(" separator="," close=")" item="val">
+            ${val}
+        </foreach>
+    </select>
 </mapper>

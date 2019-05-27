@@ -31,4 +31,19 @@
         insert into cskaoyan_mall_keyword (id,keyword,url,is_hot,is_default,sort_order,add_time,update_time,deleted)
         values (null,#{keyword},#{url},#{isHot},#{isDefault},0,#{addTime},#{updateTime},false)
     </insert>
+    <select id="getDefault" resultType="com.cskaoyan.malladmin.bean.market.Keywords" >
+        select id,keyword,url,is_hot as `isHot`,is_default as `isDefault`,sort_order as sortOrder,
+        add_time as addTime,update_time as updateTime,deleted from cskaoyan_mall_keyword where is_default = 1 and deleted = false
+    </select>
+    <select id="getHot" resultType="com.cskaoyan.malladmin.bean.market.Keywords" >
+        select id,keyword,url,is_hot as `isHot`,is_default as `isDefault`,sort_order as sortOrder,
+        add_time as addTime,update_time as updateTime,deleted from cskaoyan_mall_keyword where is_hot = 1 and deleted = false
+    </select>
+    <select id="getRandomKeyword" resultType="com.cskaoyan.malladmin.bean.market.Keywords" >
+        select id,keyword,url,is_hot as `isHot`,is_default as `isDefault`,sort_order as sortOrder,
+        add_time as addTime,update_time as updateTime,deleted from cskaoyan_mall_keyword where deleted = false order by rand() limit #{counts}
+    </select>
+    <select id="getKeywordLikeList" resultType="string" >
+        select keyword from cskaoyan_mall_keyword where deleted = false and keyword like #{value}
+    </select>
 </mapper>
