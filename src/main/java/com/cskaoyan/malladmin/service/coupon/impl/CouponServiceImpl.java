@@ -26,7 +26,7 @@ public class CouponServiceImpl implements CouponService {
     @Override
     public QueryVo queryConditions(QueryIn queryIn, String name, String type, String status) {
         CouponExample couponExample = new CouponExample();
-        CouponExample.Criteria or = couponExample.or();
+        CouponExample.Criteria or = couponExample.or().andDeletedEqualTo(false);
         if (name != null && name.trim().length() > 0) {
             or.andNameLike("%" + name + "%");
         }

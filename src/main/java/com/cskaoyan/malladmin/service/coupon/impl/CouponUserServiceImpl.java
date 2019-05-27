@@ -27,7 +27,7 @@ public class CouponUserServiceImpl implements CouponUserService {
     public QueryVo listUserByCouponId(QueryIn queryIn, int couponId, String userId, String status) {
         CouponUserExample couponUserExample = new CouponUserExample();
         couponUserExample.setOrderByClause(queryIn.getSort()+" "+queryIn.getOrder());
-        CouponUserExample.Criteria or = couponUserExample.or().andCouponIdEqualTo(couponId);
+        CouponUserExample.Criteria or = couponUserExample.or().andCouponIdEqualTo(couponId).andDeletedEqualTo(false);
         if (userId!=null && userId.trim().length()>0){
             try {
                 or.andUserIdEqualTo(Integer.parseInt(userId));

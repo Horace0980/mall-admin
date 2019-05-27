@@ -25,7 +25,7 @@ public class AdServiceImpl implements AdService {
     @Override
     public QueryVo queryConditions(QueryIn queryIn, String name, String content) {
         AdExample adExample = new AdExample();
-        AdExample.Criteria or = adExample.or();
+        AdExample.Criteria or = adExample.or().andDeletedEqualTo(false);
         if (content!=null&& content.trim().length()>0){
             or.andContentLike("%"+content+"%");
         }
