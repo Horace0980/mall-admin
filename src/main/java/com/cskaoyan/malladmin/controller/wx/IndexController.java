@@ -1,6 +1,7 @@
 package com.cskaoyan.malladmin.controller.wx;
 
 import com.cskaoyan.malladmin.service.goods.GoodsService;
+import com.cskaoyan.malladmin.service.wx.IndexService;
 import com.cskaoyan.malladmin.vo.QueryVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,9 @@ public class IndexController {
     @Autowired
     GoodsService goodsService;
 
+    @Autowired
+    IndexService indexService;
+
     @RequestMapping("goods/count")
     public QueryVo indexCount() {
         QueryVo indexCount = goodsService.indexCount();
@@ -26,9 +30,8 @@ public class IndexController {
     @RequestMapping("home/index")
     public QueryVo wxHome() {
 
-
-
-        return new QueryVo(0,null,"");
+        QueryVo wxHome = indexService.wxHome();
+        return wxHome;
     }
 
 }
