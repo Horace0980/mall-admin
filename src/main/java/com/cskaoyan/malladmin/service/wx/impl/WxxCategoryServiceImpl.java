@@ -11,10 +11,7 @@ import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @Author: yyc
@@ -89,7 +86,13 @@ public class WxxCategoryServiceImpl implements WxxCategoryService {
         for (Goods good : goods) {
             category_ids.add(good.getCategoryId());
         }
-        List<Category> categories = categoryMapper.selectByIdIn(category_ids);
+        List<Category> categories=null;
+        if (category_ids.size()==0){
+             categories = new ArrayList<>();
+        }else{
+
+            categories = categoryMapper.selectByIdIn(category_ids);
+        }
         map.put("filterCategoryList",categories);
         map.put("goodsList",goods);
         map.put("count",goods.size());
