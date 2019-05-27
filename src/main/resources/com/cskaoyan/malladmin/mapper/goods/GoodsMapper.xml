@@ -92,6 +92,14 @@
   <sql id="Blob_Column_List">
     detail
   </sql>
+
+  <select id="selectNewGoodsList" resultMap="ResultMapWithBLOBs">
+    select <include refid="Base_Column_List" />,
+    <include refid="Blob_Column_List" /> from
+    cskaoyan_mall_goods ORDER BY update_time desc
+    LIMIT 0,6
+  </select>
+  
   <select id="selectByExampleWithBLOBs" parameterType="com.cskaoyan.malladmin.bean.goods.GoodsExample" resultMap="ResultMapWithBLOBs">
     select
     <if test="distinct">
