@@ -35,4 +35,14 @@
          select id,`name`,`desc`,pic_url as picUrl,sort_order as sortOrder,floor_price as floorPrice,add_time as addTime,
          update_time as updateTime,deleted from cskaoyan_mall_brand where deleted = false
     </select>
+    <select id="selectBrandById" resultType="com.cskaoyan.malladmin.bean.market.Brand">
+        select id,`name`,`desc`,pic_url as picUrl,sort_order as sortOrder,floor_price as floorPrice,add_time as addTime,
+         update_time as updateTime,deleted from cskaoyan_mall_brand
+         <where>
+             and deleted = false
+             <if test="id != 0">
+                and id = #{id}
+             </if>
+         </where>
+    </select>
 </mapper>
