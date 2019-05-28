@@ -15,10 +15,17 @@ public class WxCommentController {
     @Autowired
     CommentService commentService;
     @RequestMapping("wx/comment/list")
+
     public QueryVo list(String valueId, String type, String showType, String page, String size){
 
         QueryVo list = commentService.list(valueId,type,showType,page,size);
         return list;
 
+    }
+
+    @RequestMapping("wx/comment/count")
+    public QueryVo count(String valueId, String type){
+        QueryVo count = commentService.count(valueId,type);
+        return count;
     }
 }

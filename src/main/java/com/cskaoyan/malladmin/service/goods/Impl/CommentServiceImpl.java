@@ -58,8 +58,36 @@ public class CommentServiceImpl implements CommentService {
         PageHelper.startPage(Integer.parseInt(page),Integer.parseInt(size));
         List<Comment> comments = commentMapper.selectByExample(commentExample);
 
-        map.put("commentCount",comment.size());
-        map.put("commentList",comments);
+        map.put("count",comment.size());
+        map.put("data",comments);
+        map.put("currentPage",page);
         return new QueryVo(0,map,"success");
     }
+
+    @Override
+    public QueryVo count(String valueId, String type) {
+        CommentExample commentExample = new CommentExample();
+        CommentExample.Criteria criteria = commentExample.createCriteria();
+        criteria.andValueIdEqualTo(Integer.valueOf(valueId));
+        criteria.andTypeEqualTo(Byte.valueOf(type));
+        HashMap<Object, Object> map = new HashMap<>();
+        List<Comment> comment = commentMapper.selectByExample(commentExample);
+
+        map.put("allCount",comment.size());
+
+        int j =0;
+
+        for (Comment c : comment) {
+            String[] picUrls = c.getPicUrls();
+            if (picUrls.length >= 2){
+                j++;
+            }
+        }
+        map.put("hasPicCount",j);
+
+        return new QueryVo(0,map,"");
+
+    }
+
+
 }

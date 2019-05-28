@@ -28,6 +28,7 @@ public class WxTopicServiceImpl implements WxTopicService {
         Topic topic = topicMapper.selectByPrimaryKey(ids);
         HashMap<Object, Object> map = new HashMap<>();
         map.put("topic",topic);
+        map.put("goods",topic.getGoods()    );
 
         return new QueryVo(0,map,"success");
     }
