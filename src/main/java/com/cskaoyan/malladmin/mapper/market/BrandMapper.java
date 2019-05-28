@@ -1,6 +1,7 @@
 package com.cskaoyan.malladmin.mapper.market;
 
 import com.cskaoyan.malladmin.bean.market.Brand;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -20,4 +21,6 @@ public interface BrandMapper {
     int updateBrand(Brand brand);
 
     List<Brand> getBrandList();
+
+    Brand selectBrandById(@Param("id") int id);
 }
