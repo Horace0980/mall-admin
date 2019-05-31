@@ -92,7 +92,10 @@
   <sql id="Blob_Column_List">
     detail
   </sql>
-
+<select id="selectRandom" resultMap="BaseResultMap" >
+  select <include refid="Base_Column_List" /> from
+  cskaoyan_mall_goods ORDER BY rand() limit #{value}
+</select>
   <select id="selectNewGoodsList" resultMap="ResultMapWithBLOBs">
     select <include refid="Base_Column_List" />,
     <include refid="Blob_Column_List" /> from

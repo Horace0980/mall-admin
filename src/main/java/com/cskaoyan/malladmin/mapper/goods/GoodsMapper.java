@@ -37,4 +37,6 @@ public interface GoodsMapper {
   int getGoodsTotal();
 
   List<Goods> selectNewGoodsList();
+
+    List<Goods> selectRandom(int i);
 }

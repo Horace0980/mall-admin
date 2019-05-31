@@ -101,7 +101,7 @@ public class IndexServiceImpl implements IndexService {
         return new QueryVo(0,map,"success");
     }
 
-    private List<Goods> getHotGoodsList() {
+    public List<Goods> getHotGoodsList() {
         GoodsExample goodsExample = new GoodsExample();
         GoodsExample.Criteria criteria = goodsExample.createCriteria();
         List<Short> list = new ArrayList<>();
@@ -208,5 +208,26 @@ public class IndexServiceImpl implements IndexService {
             }
         }
         return nums;
+    }
+
+    public List<Goods> getRelatedGoodsList(String id) {
+        Goods goods = goodsMapper.selectByPrimaryKey(Integer.parseInt(id));
+        if (goods==null){
+            return new ArrayList<Goods>();
+        }
+        GoodsExample goodsExample = new GoodsExample();
+        goodsExample.or().andCategoryIdEqualTo(goods.getCategoryId());
+        List<Goods> goods1 = goodsMapper.selectByExample(goodsExample);
+        if (goods1.size()>6){
+            goods1 = goods1.subList(0,6);
+        }
+        if (goods1.size()<6){
+            List<Goods> goodsRan = goodsMapper.selectRandom(6-goods1.size());
+            goods1.addAll(goodsRan);
+        }
+
+        return goods1;
+
+
     }
 }

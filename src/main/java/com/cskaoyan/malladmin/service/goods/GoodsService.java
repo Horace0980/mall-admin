@@ -24,4 +24,6 @@ public interface GoodsService {
     QueryVo updates(UpdateData updateData);
 
     QueryVo indexCount();
+
+    QueryVo getWxDetail(int parseInt);
 }
