@@ -23,7 +23,7 @@ public class PhoneCode {
 
     public static String getPhoneMsg(String mobile, HttpServletRequest req) {
 
-        mobile = mobile.substring(11, mobile.length()-2);
+        mobile = mobile.substring(11, mobile.length() - 2);
 
         if (mobile == null || mobile == "") {
             System.out.printf(mobile);
@@ -70,6 +70,8 @@ public class PhoneCode {
             sendSmsResponse = acsClient.getAcsResponse(request);
             if (sendSmsResponse.getCode() != null
                     && sendSmsResponse.getCode().equals("OK")) {
+                HttpSession session = req.getSession();
+                session.setAttribute("code", code);
             } else {
                 System.out.println(sendSmsResponse.getCode());
                 System.out.println("获取验证码失败...");
@@ -84,8 +86,7 @@ public class PhoneCode {
             return "由于系统维护，暂时无法注册！！！";
         }
 
-        HttpSession session = req.getSession();
-        session.setAttribute(mobile,code);
+
         return "true";
 
 
