@@ -86,6 +86,7 @@ public class UserServiceImpl implements UserService {
         User user = userMapper.getUser(users.getUsername(),users.getPassword());
         if (user!=null){
             userMapper.updateIp(ip,user.getUsername(),user.getPassword());
+            user.setLastLoginIp(ip);
         }
 
         return user;
