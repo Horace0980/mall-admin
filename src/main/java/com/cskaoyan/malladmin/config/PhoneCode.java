@@ -10,6 +10,7 @@ import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Random;
@@ -70,8 +71,8 @@ public class PhoneCode {
             sendSmsResponse = acsClient.getAcsResponse(request);
             if (sendSmsResponse.getCode() != null
                     && sendSmsResponse.getCode().equals("OK")) {
-                HttpSession session = req.getSession();
-                session.setAttribute("code", code);
+                ServletContext servletContext = req.getSession().getServletContext();
+                servletContext.setAttribute("code", code);
             } else {
                 System.out.println(sendSmsResponse.getCode());
                 System.out.println("获取验证码失败...");

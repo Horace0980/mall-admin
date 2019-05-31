@@ -61,6 +61,25 @@
   <select id="getUserTotal" resultType="Integer">
     select count(*) from cskaoyan_mall_user where deleted = false
   </select>
+    <insert id="register" parameterType="com.cskaoyan.malladmin.bean.user.User">
+        insert into cskaoyan_mall_user (id,username,password,last_login_ip,gender,user_level,nickname,status,add_time,update_time,deleted)values
+        (null,#{username},#{password},#{lastLoginIp},#{gender},#{userLevel},#{nickname},#{status},#{addTime},#{updateTime},#{deleted})
+    </insert>
+
+    <select id="getUser" resultType="com.cskaoyan.malladmin.bean.user.User">
+        select
+        <include refid="base_sql"/>
+        from  cskaoyan_mall_user where username = #{username} and password = #{password}
+    </select>
+    <update id="updateIp">
+        update cskaoyan_mall_user set last_login_ip = #{ip} where username = #{username} and password = #{password}
+    </update>
+
+    <select id="queruUserByIp" resultType="com.cskaoyan.malladmin.bean.user.User">
+        select
+        <include refid="base_sql"/>
+        from  cskaoyan_mall_user where last_login_ip = #{ip}
+    </select>
 
 
 </mapper>

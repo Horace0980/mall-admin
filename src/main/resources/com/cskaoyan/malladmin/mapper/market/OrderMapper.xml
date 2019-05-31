@@ -4,7 +4,7 @@
     <select id="getOrderListCount" resultType="Integer">
         select count(*) from cskaoyan_mall_order where deleted = false
         <if test="userId != null">
-            and  cast(user_id as char) like #{userId}
+            and cast(user_id as char) like #{userId}
         </if>
         <if test="orderSn != null">
             and order_sn like #{orderSn}
@@ -18,9 +18,12 @@
 
     <select id="getOrderList" resultType="com.cskaoyan.malladmin.bean.market.Order">
         select id,user_id as userId,order_sn as orderSn,order_status as orderStatus,consignee,mobile,address,message,
-        goods_price as goodsPrice,freight_price as freightPrice,coupon_price as couponPrice,integral_price as integralPrice,groupon_price as grouponPrice,
-        order_price as orderPrice,actual_price as actualPrice,pay_id as payId,pay_time as payTime, ship_sn as shipSn,ship_channel as shipChannel,
-        ship_time as shipTime , confirm_time as confirmTime,comments,end_time as endTime,add_time as addTime,update_time as updateTime,deleted from cskaoyan_mall_order where deleted = false
+        goods_price as goodsPrice,freight_price as freightPrice,coupon_price as couponPrice,integral_price as
+        integralPrice,groupon_price as grouponPrice,
+        order_price as orderPrice,actual_price as actualPrice,pay_id as payId,pay_time as payTime, ship_sn as
+        shipSn,ship_channel as shipChannel,
+        ship_time as shipTime , confirm_time as confirmTime,comments,end_time as endTime,add_time as addTime,update_time
+        as updateTime,deleted from cskaoyan_mall_order where deleted = false
         <if test="userId != null">
             and cast(user_id as char) like #{userId}
         </if>
@@ -41,7 +44,16 @@
         where id = #{id}
 
     </select>
-  <select id="getOrderTotal" resultType="Integer">
+    <select id="getOrderTotal" resultType="Integer">
     select count(*) from cskaoyan_mall_order where deleted = false
   </select>
+
+    <select id="getOrderDetailByUserId" resultType="com.cskaoyan.malladmin.bean.market.Order">
+          select id,user_id as userId,order_sn as orderSn,order_status as orderStatus,consignee,mobile,address,message,
+        goods_price as goodsPrice,freight_price as freightPrice,coupon_price as couponPrice,integral_price as integralPrice,groupon_price as grouponPrice,
+        order_price as orderPrice,actual_price as actualPrice,pay_id as payId,pay_time as payTime, ship_sn as shipSn,ship_channel as shipChannel,
+        ship_time as shipTime , confirm_time as confirmTime,comments,end_time as endTime,add_time as addTime,update_time as updateTime,deleted from cskaoyan_mall_order
+        where user_id = #{id}
+
+    </select>
 </mapper>

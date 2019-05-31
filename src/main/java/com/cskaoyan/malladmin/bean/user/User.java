@@ -8,6 +8,8 @@ import java.util.Date;
  * @Date: 2019/5/22 20:35
  */
 public class User {
+
+
     private int id;
     private String username ;
     private String password;
