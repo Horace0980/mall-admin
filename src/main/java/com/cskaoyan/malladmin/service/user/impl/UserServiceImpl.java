@@ -61,12 +61,18 @@ public class UserServiceImpl implements UserService {
         register.setLastLoginIp(ip);
         register.setMobile(user.getMobile());
 
-        int isRe = userMapper.register(register);
+        int count =  userMapper.queryUserByMobile(user.getMobile());
 
         User userInfo = new User();
-        if (isRe ==1){
-           userInfo = register;
+        if (count == 0){
+            int isRe = userMapper.register(register);
+
+            if (isRe ==1){
+                userInfo = register;
+            }
+
         }
+
 
         return userInfo;
 
@@ -93,6 +99,22 @@ public class UserServiceImpl implements UserService {
         HashMap<Object, Object> map = new HashMap<>();
         map.put("order",order);
         return new QueryVo(0,map,"success");
+    }
+
+    @Override
+    public QueryVo reset(UserRegister userRegister) {
+        QueryVo queryVo = new QueryVo();
+
+        int isUp = userMapper.updatePassword(userRegister.getPassword(),userRegister.getMobile());
+
+        if (isUp ==1){
+            queryVo = new QueryVo(0,null,"success");
+        }else {
+            queryVo = new QueryVo(605,null,"failed");
+        }
+
+        return queryVo;
+
     }
 
 }

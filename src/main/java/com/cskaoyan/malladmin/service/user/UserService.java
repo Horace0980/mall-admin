@@ -18,4 +18,6 @@ public interface UserService {
     User login(User user, String ip);
 
     QueryVo index(String ip);
+
+    QueryVo reset(UserRegister userRegister);
 }

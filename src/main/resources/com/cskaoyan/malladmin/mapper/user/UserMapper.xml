@@ -81,5 +81,14 @@
         from  cskaoyan_mall_user where last_login_ip = #{ip}
     </select>
 
+    <select id="queryUserByMobile" resultType="Integer">
+            select count(*) from cskaoyan_mall_user where mobile = #{mobile}
+
+    </select>
+
+    <update id="updatePassword">
+        update cskaoyan_mall_user set password = #{password} where mobile = #{mobile}
+    </update>
+
 
 </mapper>

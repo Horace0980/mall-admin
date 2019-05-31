@@ -71,7 +71,12 @@ public class WxLoginController {
             return new QueryVo(605,null,"failed");
         }
 
+    }
 
+    @RequestMapping("auth/reset")
+    public QueryVo reset(@RequestBody UserRegister userRegister){
+        QueryVo reset = userService.reset(userRegister);
+        return reset;
     }
 
 }

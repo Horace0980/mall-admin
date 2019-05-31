@@ -28,4 +28,8 @@ public interface UserMapper {
     void updateIp(String ip, String username, String password);
 
     User queruUserByIp(String ip);
+
+    int queryUserByMobile(String mobile);
+
+    int updatePassword(String password, String mobile);
 }
