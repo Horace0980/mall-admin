@@ -35,6 +35,9 @@ public class UserServiceImpl implements UserService {
         if(username!=null && !"".equals(username)){
             username="%"+username+"%";
         }
+        if(mobile!=null && !"".equals(mobile)){
+            mobile="%"+mobile+"%";
+        }
 
         PageHelper.startPage(queryIn.getPage(),queryIn.getLimit());
         List<User> list=userMapper.selectAllUser(queryIn.getSort(),queryIn.getOrder(),username,mobile);
